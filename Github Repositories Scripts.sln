@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{04EC5556-07B7-49D7-8B3A-FF10EBF353D7}"
+	ProjectSection(SolutionItems) = preProject
+		Internal\.editorconfig = Internal\.editorconfig
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FCE56FC5-AD39-493E-9602-32BBF47262AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{CD262206-9B00-4926-800D-50B7A5478929}"
+	ProjectSection(SolutionItems) = preProject
+		Dlls\ABOUT.md = Dlls\ABOUT.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CompanionFiles", "CompanionFiles", "{DC2B2514-8116-49CA-A3E5-E6F058E8CBEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skyline DataMiner", "Skyline DataMiner", "{8E6F46FB-42FD-4CEA-9C45-62DA0F557BF0}"
+	ProjectSection(SolutionItems) = preProject
+		CompanionFiles\Skyline DataMiner\AboutThisFolder.md = CompanionFiles\Skyline DataMiner\AboutThisFolder.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{DE922C94-0012-4194-BD77-C4E994E719FF}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\ABOUT.md = Documentation\ABOUT.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F8938D60-51A0-4880-9CFC-19C66379BB5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Analysis", "Code Analysis", "{C49E6D4A-3B22-4927-86CA-9C1B6DF790B5}"
+	ProjectSection(SolutionItems) = preProject
+		Internal\Code Analysis\qaction-debug.ruleset = Internal\Code Analysis\qaction-debug.ruleset
+		Internal\Code Analysis\qaction-release.ruleset = Internal\Code Analysis\qaction-release.ruleset
+		Internal\Code Analysis\stylecop.json = Internal\Code Analysis\stylecop.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Add Repository To Github Repositories Element", "Add Repository To Github Repositories Element", "{DA25CC7D-1AA8-4CF4-AC9A-1279CD51AE03}"
+	ProjectSection(SolutionItems) = preProject
+		Add Repository To Github Repositories Element.xml = Add Repository To Github Repositories Element.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{B24E7655-94F3-41A4-AFD1-601C7D1FEEBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Add Repository To Github Repositories Element_1", "Add Repository To Github Repositories Element_1\Add Repository To Github Repositories Element_1.csproj", "{E617EBBC-EA87-4CAA-A407-7A27875FEA11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E617EBBC-EA87-4CAA-A407-7A27875FEA11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E617EBBC-EA87-4CAA-A407-7A27875FEA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E617EBBC-EA87-4CAA-A407-7A27875FEA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E617EBBC-EA87-4CAA-A407-7A27875FEA11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8E6F46FB-42FD-4CEA-9C45-62DA0F557BF0} = {DC2B2514-8116-49CA-A3E5-E6F058E8CBEC}
+		{C49E6D4A-3B22-4927-86CA-9C1B6DF790B5} = {04EC5556-07B7-49D7-8B3A-FF10EBF353D7}
+		{DA25CC7D-1AA8-4CF4-AC9A-1279CD51AE03} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
+		{B24E7655-94F3-41A4-AFD1-601C7D1FEEBB} = {DA25CC7D-1AA8-4CF4-AC9A-1279CD51AE03}
+		{E617EBBC-EA87-4CAA-A407-7A27875FEA11} = {B24E7655-94F3-41A4-AFD1-601C7D1FEEBB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE357FD7-C2CA-4152-A59F-2F2F7BAF839C}
+	EndGlobalSection
+EndGlobal
