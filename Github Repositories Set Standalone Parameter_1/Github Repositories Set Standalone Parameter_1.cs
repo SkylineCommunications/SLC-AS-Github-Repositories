@@ -51,23 +51,23 @@ dd/mm/2023	1.0.0.1		XXX, Skyline	Initial version
 
 namespace Github_Repositories_Set_Standalone_Parameter_1
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Globalization;
-	using System.Text;
-	using Skyline.DataMiner.Automation;
+    using System;
 
-	/// <summary>
-	/// Represents a DataMiner Automation script.
-	/// </summary>
-	public class Script
-	{
-		/// <summary>
-		/// The script entry point.
-		/// </summary>
-		/// <param name="engine">Link with SLAutomation process.</param>
-		public void Run(IEngine engine)
-		{
+    using Skyline.DataMiner.Automation;
+
+    /// <summary>
+    /// Represents a DataMiner Automation script.
+    /// </summary>
+    public class Script
+    {
+        /// <summary>
+        /// The script entry point.
+        /// </summary>
+        /// <param name="engine">Link with SLAutomation process.</param>
+        public void Run(IEngine engine)
+        {
+            engine.SetFlag(RunTimeFlags.NoCheckingSets);
+
             var agentId = Convert.ToInt32(engine.GetScriptParam("Agent Id").Value);
             var elementId = Convert.ToInt32(engine.GetScriptParam("Element Id").Value);
             var paramId = Convert.ToInt32(engine.GetScriptParam("Parameter Id").Value);
@@ -76,5 +76,5 @@ namespace Github_Repositories_Set_Standalone_Parameter_1
             var element = engine.FindElement(agentId, elementId);
             element.SetParameter(paramId, paramValue);
         }
-	}
+    }
 }
