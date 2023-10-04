@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <DMSScript options="272" xmlns="http://www.skyline.be/automation">
-	<Name>Add Repository To Github Repositories Element</Name>
+	<Name>Github Repositories Add Remove Repository</Name>
 	<Description></Description>
 	<Type>Automation</Type>
 	<Author>SKYLINE2\ArneMA</Author>
@@ -26,11 +26,14 @@
 		<ScriptParameter id="13" type="string" values="">
 			<Description>Repo Owner</Description>
 		</ScriptParameter>
+		<ScriptParameter id="14" type="string" values="">
+			<Description>Add or Remove</Description>
+		</ScriptParameter>
 	</Parameters>
 
 	<Script>
 		<Exe id="1" type="csharp">
-			<Value><![CDATA[[Project:Add Repository To Github Repositories Element_1]]]></Value>
+			<Value><![CDATA[[Project:Github Repositories Add Remove Repository_1]]]></Value>
 			<!--<Param type="debug">true</Param>-->
 			<Message></Message>
 		</Exe>

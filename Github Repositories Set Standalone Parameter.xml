@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DMSScript options="272" xmlns="http://www.skyline.be/automation">
+	<Name>Github Repositories Set Standalone Parameter</Name>
+	<Description></Description>
+	<Type>Automation</Type>
+	<Author>SKYLINE2\ArneMA</Author>
+	<CheckSets>FALSE</CheckSets>
+	<Folder>Github/Scripts</Folder>
+
+	<Protocols>
+	</Protocols>
+
+	<Memory>
+	</Memory>
+
+	<Parameters>
+		<ScriptParameter id="10" type="string" values="">
+			<Description>Agent Id</Description>
+		</ScriptParameter>
+		<ScriptParameter id="11" type="string" values="">
+			<Description>Element Id</Description>
+		</ScriptParameter>
+		<ScriptParameter id="12" type="string" values="">
+			<Description>Parameter Id</Description>
+		</ScriptParameter>
+		<ScriptParameter id="13" type="string" values="">
+			<Description>Parameter Value</Description>
+		</ScriptParameter>
+	</Parameters>
+
+	<Script>
+		<Exe id="1" type="csharp">
+			<Value><![CDATA[[Project:Github Repositories Set Standalone Parameter_1]]]></Value>
+			<!--<Param type="debug">true</Param>-->
+			<Message></Message>
+		</Exe>
+	</Script>
+</DMSScript>

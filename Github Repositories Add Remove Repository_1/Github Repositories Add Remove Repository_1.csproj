@@ -17,11 +17,12 @@
     <DefineConstants>$(DefineConstants);DCFv1;DBInfo;ALARM_SQUASHING</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.1.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.1.11" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties DisLinkedXmlFile="..\Add Repository To Github Repositories Element.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
+      <UserProperties DisLinkedXmlFile="..\Github Repositories Add Remove Repository.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

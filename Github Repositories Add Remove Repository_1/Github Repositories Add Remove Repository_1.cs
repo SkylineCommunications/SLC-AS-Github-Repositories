@@ -49,13 +49,14 @@ dd/mm/2023	1.0.0.1		XXX, Skyline	Initial version
 ****************************************************************************
 */
 
-namespace Add_Repository_To_Github_Repositories_Element_1
+namespace Github_Repositories_Add_Remove_Repository_1
 {
     using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Text;
+
+    using Newtonsoft.Json;
+
     using Skyline.DataMiner.Automation;
+    using Skyline.Protocol.Tables;
 
     /// <summary>
     /// Represents a DataMiner Automation script.
@@ -72,15 +73,41 @@ namespace Add_Repository_To_Github_Repositories_Element_1
             var elementId = Convert.ToInt32(engine.GetScriptParam("Element Id").Value);
             var name = engine.GetScriptParam("Repo Name").Value.Replace("[", String.Empty).Replace("]", String.Empty).Replace("\"", String.Empty);
             var owner = engine.GetScriptParam("Repo Owner").Value.Replace("[", String.Empty).Replace("]", String.Empty).Replace("\"", String.Empty);
+            var remove = engine.GetScriptParam("Add or Remove").Value;
 
             var element = engine.FindElement(agentId, elementId);
-            element.SetParameter(501, name);
-            element.SetParameter(502, owner);
-            element.SetParameter(500, 1);
-            element.SetParameterByPrimaryKey(21006, "0", 1);
-            element.SetParameterByPrimaryKey(21006, "1", 1);
-            element.SetParameterByPrimaryKey(21006, "2", 1);
-            element.SetParameterByPrimaryKey(21006, "3", 1);
+
+            if (remove.ToUpper() == "ADD")
+            {
+                AddRepo(element, owner, name);
+            }
+
+            if (remove.ToUpper() == "REMOVE")
+            {
+                RemoveRepo(element, owner, name);
+            }
+
+            Refresh(element);
+        }
+
+        private static void AddRepo(Element element, string owner, string name)
+        {
+            var request = new AddRepositoriesTableRequest(owner, name);
+            element.SetParameter(992, JsonConvert.SerializeObject(request));
+        }
+
+        private static void RemoveRepo(Element element, string owner, string name)
+        {
+            var request = new RemoveRepositoriesTableRequest($"{owner}/{name}");
+            element.SetParameter(992, JsonConvert.SerializeObject(request));
+        }
+
+        private static void Refresh(Element element)
+        {
+            element.SetParameterByPrimaryKey(21006, "201", 1);
+            element.SetParameterByPrimaryKey(21006, "202", 1);
+            element.SetParameterByPrimaryKey(21006, "203", 1);
+            element.SetParameterByPrimaryKey(21006, "204", 1);
         }
     }
 }

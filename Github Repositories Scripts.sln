@@ -37,14 +37,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Analysis", "Code Analy
 		Internal\Code Analysis\stylecop.json = Internal\Code Analysis\stylecop.json
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Add Repository To Github Repositories Element", "Add Repository To Github Repositories Element", "{DA25CC7D-1AA8-4CF4-AC9A-1279CD51AE03}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Set Standalone Parameter", "Github Repositories Set Standalone Parameter", "{03B2DF9C-A3C0-42A6-BA3A-CAE6320F036D}"
 	ProjectSection(SolutionItems) = preProject
-		Add Repository To Github Repositories Element.xml = Add Repository To Github Repositories Element.xml
+		Github Repositories Set Standalone Parameter.xml = Github Repositories Set Standalone Parameter.xml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{B24E7655-94F3-41A4-AFD1-601C7D1FEEBB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{31F0F3DF-9F69-4316-8843-1F409B2A1CB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Add Repository To Github Repositories Element_1", "Add Repository To Github Repositories Element_1\Add Repository To Github Repositories Element_1.csproj", "{E617EBBC-EA87-4CAA-A407-7A27875FEA11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Set Standalone Parameter_1", "Github Repositories Set Standalone Parameter_1\Github Repositories Set Standalone Parameter_1.csproj", "{EA174789-D4BD-468E-88B1-A05DB3285760}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Add Remove Repository", "Github Repositories Add Remove Repository", "{744DBFCE-BBAC-4DEF-B1D0-F163DFB20B6D}"
+	ProjectSection(SolutionItems) = preProject
+		Github Repositories Add Remove Repository.xml = Github Repositories Add Remove Repository.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{2693563C-C744-4898-9167-CEF9F772302D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Add Remove Repository_1", "Github Repositories Add Remove Repository_1\Github Repositories Add Remove Repository_1.csproj", "{ED1CA827-5999-4766-9945-527C7FD62E97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +61,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E617EBBC-EA87-4CAA-A407-7A27875FEA11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E617EBBC-EA87-4CAA-A407-7A27875FEA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E617EBBC-EA87-4CAA-A407-7A27875FEA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E617EBBC-EA87-4CAA-A407-7A27875FEA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA174789-D4BD-468E-88B1-A05DB3285760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA174789-D4BD-468E-88B1-A05DB3285760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA174789-D4BD-468E-88B1-A05DB3285760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA174789-D4BD-468E-88B1-A05DB3285760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1CA827-5999-4766-9945-527C7FD62E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1CA827-5999-4766-9945-527C7FD62E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1CA827-5999-4766-9945-527C7FD62E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1CA827-5999-4766-9945-527C7FD62E97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,9 +76,12 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8E6F46FB-42FD-4CEA-9C45-62DA0F557BF0} = {DC2B2514-8116-49CA-A3E5-E6F058E8CBEC}
 		{C49E6D4A-3B22-4927-86CA-9C1B6DF790B5} = {04EC5556-07B7-49D7-8B3A-FF10EBF353D7}
-		{DA25CC7D-1AA8-4CF4-AC9A-1279CD51AE03} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
-		{B24E7655-94F3-41A4-AFD1-601C7D1FEEBB} = {DA25CC7D-1AA8-4CF4-AC9A-1279CD51AE03}
-		{E617EBBC-EA87-4CAA-A407-7A27875FEA11} = {B24E7655-94F3-41A4-AFD1-601C7D1FEEBB}
+		{03B2DF9C-A3C0-42A6-BA3A-CAE6320F036D} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
+		{31F0F3DF-9F69-4316-8843-1F409B2A1CB4} = {03B2DF9C-A3C0-42A6-BA3A-CAE6320F036D}
+		{EA174789-D4BD-468E-88B1-A05DB3285760} = {31F0F3DF-9F69-4316-8843-1F409B2A1CB4}
+		{744DBFCE-BBAC-4DEF-B1D0-F163DFB20B6D} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
+		{2693563C-C744-4898-9167-CEF9F772302D} = {744DBFCE-BBAC-4DEF-B1D0-F163DFB20B6D}
+		{ED1CA827-5999-4766-9945-527C7FD62E97} = {2693563C-C744-4898-9167-CEF9F772302D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE357FD7-C2CA-4152-A59F-2F2F7BAF839C}
