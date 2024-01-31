@@ -55,6 +55,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{2693
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Add Remove Repository_1", "Github Repositories Add Remove Repository_1\Github Repositories Add Remove Repository_1.csproj", "{ED1CA827-5999-4766-9945-527C7FD62E97}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "Common\Common.shproj", "{E573A8A0-89FA-4668-B70F-EAC3E94E1534}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Add Workflow", "Github Repositories Add Workflow", "{9FDA302F-0934-45D7-9AB7-9528C0707E8E}"
+	ProjectSection(SolutionItems) = preProject
+		Github Repositories Add Workflow.xml = Github Repositories Add Workflow.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{72F60C18-991D-48F2-A408-02D8CF5DC2DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Add Workflow_1", "Github Repositories Add Workflow_1\Github Repositories Add Workflow_1.csproj", "{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +80,10 @@ Global
 		{ED1CA827-5999-4766-9945-527C7FD62E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED1CA827-5999-4766-9945-527C7FD62E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED1CA827-5999-4766-9945-527C7FD62E97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,8 +97,15 @@ Global
 		{744DBFCE-BBAC-4DEF-B1D0-F163DFB20B6D} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
 		{2693563C-C744-4898-9167-CEF9F772302D} = {744DBFCE-BBAC-4DEF-B1D0-F163DFB20B6D}
 		{ED1CA827-5999-4766-9945-527C7FD62E97} = {2693563C-C744-4898-9167-CEF9F772302D}
+		{9FDA302F-0934-45D7-9AB7-9528C0707E8E} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
+		{72F60C18-991D-48F2-A408-02D8CF5DC2DC} = {9FDA302F-0934-45D7-9AB7-9528C0707E8E}
+		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1} = {72F60C18-991D-48F2-A408-02D8CF5DC2DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE357FD7-C2CA-4152-A59F-2F2F7BAF839C}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Common\Common.projitems*{e573a8a0-89fa-4668-b70f-eac3e94e1534}*SharedItemsImports = 13
+		Common\Common.projitems*{e9aa68d4-ab23-45e2-92ae-abebc9e66bc1}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
