@@ -80,7 +80,7 @@
 			switch (instance.Type)
 			{
 				case Github_Repositories.Enums.Workflowtype.AutomationScriptCI:
-					if (instance.AutomationScriptCI_IsPrivateRepository)
+					if (instance.AutomationScriptCI_IsPrivateRepository && instance.Status.Status != Statuses.PrivateRepository)
 					{
 						return Statuses.PrivateRepository;
 					}
@@ -88,7 +88,7 @@
 					return Statuses.AutomationScriptCI;
 
 				case Github_Repositories.Enums.Workflowtype.AutomationScriptCICD:
-					if (instance.AutomationScriptCICD_IsPrivateRepository)
+					if (instance.AutomationScriptCICD_IsPrivateRepository && instance.Status.Status != Statuses.PrivateRepository)
 					{
 						return Statuses.PrivateRepository;
 					}
@@ -96,7 +96,7 @@
 					return Statuses.AutomationScriptCICD;
 
 				case Github_Repositories.Enums.Workflowtype.ConnectorCI:
-					if (instance.ConnectorCI_IsPrivateRepository)
+					if (instance.ConnectorCI_IsPrivateRepository && instance.Status.Status != Statuses.PrivateRepository)
 					{
 						return Statuses.PrivateRepository;
 					}
@@ -107,7 +107,7 @@
 					return Statuses.NugetCICD;
 
 				case Github_Repositories.Enums.Workflowtype.InternalNugetSolutionCICD:
-					if (instance.InternalNugetCICD_IsPrivateRepository)
+					if (instance.InternalNugetCICD_IsPrivateRepository && instance.Status.Status != Statuses.PrivateRepository)
 					{
 						return Statuses.PrivateRepository;
 					}
