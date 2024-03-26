@@ -19,12 +19,44 @@ namespace Common.DomIds
 			public enum Workflowtype
 			{
 				AutomationScriptCI = 0,
-				AutomationScriptCICD = 1
+				AutomationScriptCICD = 1,
+				ConnectorCI = 2,
+				NugetSolutionCICD = 3,
+				InternalNugetSolutionCICD = 4
 			}
 		}
 
 		public static class Sections
 		{
+			public static class FillInConnectorCIInformation
+			{
+				public static SectionDefinitionID Id
+				{
+					get;
+				}
+
+				= new SectionDefinitionID(new Guid("ba94d0ce-0460-42e1-a694-ccdc70a43934"))
+				{ ModuleId = "github_repositories" };
+				public static FieldDescriptorID SonarCloudProjectID
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("5874c6d4-cc37-4e79-be37-c6ca9f306c46"));
+				public static FieldDescriptorID DataminerDeployKey
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("434627ca-8d98-4ca0-a09f-671654d050c5"));
+				public static FieldDescriptorID IsPrivateRepository
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("c59f5bc7-0dc6-449b-98f9-a39c5f5f0ea6"));
+			}
+
 			public static class FillInAutomationScriptCICDInformation
 			{
 				public static SectionDefinitionID Id
@@ -46,6 +78,12 @@ namespace Common.DomIds
 				}
 
 				= new FieldDescriptorID(new Guid("61938125-373d-4a45-aca5-5ff45b98a52f"));
+				public static FieldDescriptorID IsPrivateRepository
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("87225a40-bf9d-4a21-8615-a401c9b3a4da"));
 			}
 
 			public static class ChooseWorkflow
@@ -104,6 +142,98 @@ namespace Common.DomIds
 				}
 
 				= new FieldDescriptorID(new Guid("82d0b05f-93ea-472a-a3d7-d0c8983cd18a"));
+				public static FieldDescriptorID IsPrivateRepository
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("49a05d06-3af9-4cc0-bcdd-ab965dd55f52"));
+			}
+
+			public static class FillInInternalNugetCICDInformation
+			{
+				public static SectionDefinitionID Id
+				{
+					get;
+				}
+
+				= new SectionDefinitionID(new Guid("42e8d4f4-c8b4-46fc-a5ac-1678c8fc8605"))
+				{ ModuleId = "github_repositories" };
+				public static FieldDescriptorID SonarCloudProjectID
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("cdcaf70d-803d-4385-84be-52dff0aea5d5"));
+				public static FieldDescriptorID GithubToken
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("931acb98-f10d-41d3-b5c7-7b0d05de92d2"));
+				public static FieldDescriptorID IsPrivateRepository
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("487fd78a-7e92-499e-8bfd-5b53d3f09205"));
+			}
+
+			public static class FillInPrivateRepositoryInformation
+			{
+				public static SectionDefinitionID Id
+				{
+					get;
+				}
+
+				= new SectionDefinitionID(new Guid("39c63d0f-e687-4255-bcc4-3d4e390778a6"))
+				{ ModuleId = "github_repositories" };
+				public static FieldDescriptorID PrivateSonarCloudToken
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("e168d5a4-4bb9-42b7-923b-34343035bb92"));
+			}
+
+			public static class Result
+			{
+				public static SectionDefinitionID Id
+				{
+					get;
+				}
+
+				= new SectionDefinitionID(new Guid("fe695195-cea0-4570-81aa-612ee2aed031"))
+				{ ModuleId = "github_repositories" };
+				public static FieldDescriptorID ResultMessage
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("a974acc8-8fb9-4b5c-acb9-555122691555"));
+			}
+
+			public static class FillInNugetCICDInformation
+			{
+				public static SectionDefinitionID Id
+				{
+					get;
+				}
+
+				= new SectionDefinitionID(new Guid("59cf81c3-8e1a-4990-a3bf-ab9bcc21761c"))
+				{ ModuleId = "github_repositories" };
+				public static FieldDescriptorID SonarCloudProjectID
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("19d62d3b-47a9-417f-9405-6c9375b7c661"));
+				public static FieldDescriptorID NugetAPIKey
+				{
+					get;
+				}
+
+				= new FieldDescriptorID(new Guid("4947ca60-eaf1-4ed6-beb2-839715172cbc"));
 			}
 		}
 
@@ -135,6 +265,11 @@ namespace Common.DomIds
 					public const string FillInAutomationScriptCIInformation = "7e787332-2517-40ff-95d9-fc503eb6bc55";
 					public const string FillInAutomationScriptCICDInformation = "116ea04c-e7f2-4032-8a59-8a958243e97b";
 					public const string Completed = "d5add7c5-d1fe-4dc4-b0f8-c7a22d43735e";
+					public const string FillInConnectorCIInformation = "9642d203-2556-403f-a48d-2bb397a89d34";
+					public const string FillInNugetCICDInformation = "6e8243eb-b297-46bd-ac38-6013823dde32";
+					public const string FillInInternalNugetCICDInformation = "23a154c5-f9ae-49a5-a9c0-2292d1143587";
+					public const string FillInPrivateRepositoryInformation = "601773bf-26a7-4ada-9ee7-7f20e3d185dc";
+					public const string Result = "fced3315-1237-448f-b86c-a097087e9323";
 				}
 
 				public static class Transitions
@@ -145,6 +280,39 @@ namespace Common.DomIds
 					public const string FromAutomationScriptCicd = "from-automation-script-cicd";
 					public const string FromAutomationScriptCiToCompleted = "from-automation-script-ci-to-completed";
 					public const string FromAutomationScriptCicdToCompleted = "from-automation-script-cicd-to-completed";
+					public const string ToConnectorCi = "to-connector-ci";
+					public const string ToNugetCicd = "to-nuget-cicd";
+					public const string FromConnectorCi = "from-connector-ci";
+					public const string FromNugetCicd = "from-nuget-cicd";
+					public const string FromConnectorCiToCompleted = "from-connector-ci-to-completed";
+					public const string FromNugetCicdToCompleted = "from-nuget-cicd-to-completed";
+					public const string ToInternalNugetCicd = "to-internal-nuget-cicd";
+					public const string FromInternalNugetCicd = "from-internal-nuget-cicd";
+					public const string FromInternalNugetCicdToCompleted = "from-internal-nuget-cicd-to-completed";
+					public const string FromAutomationScriptCiToPrivateRepository = "from-automation-script-ci-to-private-repository";
+					public const string FromAutomationScriptCicdToPrivateRepository = "from-automation-script-cicd-to-private-repository";
+					public const string FromConnectorCiToPrivateRepository = "from-connector-ci-to-private-repository";
+					public const string FromInternalNugetCicdToPrivateRepository = "from-internal-nuget-cicd-to-private-repository";
+					public const string FromPrivateRepositoryToCompleted = "from-private-repository-to-completed";
+					public const string FromPrivateRepositoryToAutomationScriptCi = "from-private-repository-to-automation-script-ci";
+					public const string FromPrivateRepositoryToAutomationScriptCicd = "from-private-repository-to-automation-script-cicd";
+					public const string FromPrivateRepositoryToConnectorCi = "from-private-repository-to-connector-ci";
+					public const string FromPrivateRepositoryToInternalNugetCicd = "from-private-repository-to-internal-nuget-cicd";
+					public const string FromCompletedToResult = "from-completed-to-result";
+					public const string FromCompletedToAutomationScriptCi = "from-completed-to-automation-script-ci";
+					public const string FromCompletedToAutomationScriptCicd = "from-completed-to-automation-script-cicd";
+					public const string FromCompletedToConnectorCi = "from-completed-to-connector-ci";
+					public const string FromCompletedToNugetCicd = "from-completed-to-nuget-cicd";
+					public const string FromCompletedToInternalNugetCicd = "from-completed-to-internal-nuget-cicd";
+					public const string FromCompletedToPrivateRepository = "from-completed-to-private-repository";
+				}
+
+				public static class Actions
+				{
+					public const string ToWorkflowInformation = "to-workflow-information";
+					public const string ReturnToChoose = "return-to-choose";
+					public const string AddWorkflowToRepository = "add-workflow-to-repository";
+					public const string ToNextOrComplete = "to-next-or-complete";
 				}
 			}
 		}

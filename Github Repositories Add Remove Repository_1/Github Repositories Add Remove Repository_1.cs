@@ -56,7 +56,10 @@ namespace Github_Repositories_Add_Remove_Repository_1
     using Newtonsoft.Json;
 
     using Skyline.DataMiner.Automation;
-    using Skyline.Protocol.Tables;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Repositories;
+	using Skyline.DataMiner.Core.DataMinerSystem.Automation;
+	using Skyline.Protocol.Tables;
 
     /// <summary>
     /// Represents a DataMiner Automation script.
@@ -75,39 +78,47 @@ namespace Github_Repositories_Add_Remove_Repository_1
             var owner = engine.GetScriptParam("Repo Owner").Value.Replace("[", String.Empty).Replace("]", String.Empty).Replace("\"", String.Empty);
             var remove = engine.GetScriptParam("Add or Remove").Value;
 
-            var element = engine.FindElement(agentId, elementId);
+            var element = new GithubRepositories(engine.GetUserConnection(), agentId, elementId); // engine.FindElement(agentId, elementId);
 
             if (remove.ToUpper() == "ADD")
             {
-                AddRepo(element, owner, name);
+                AddRepo(engine, element, owner, name);
             }
 
             if (remove.ToUpper() == "REMOVE")
             {
-                RemoveRepo(element, owner, name);
+                RemoveRepo(engine, element, owner, name);
             }
 
             Refresh(element);
         }
 
-        private static void AddRepo(Element element, string owner, string name)
+        private static void AddRepo(IEngine engine, GithubRepositories element, string owner, string name)
         {
-            var request = new AddRepositoriesTableRequest(owner, name);
-            element.SetParameter(992, JsonConvert.SerializeObject(request));
+            var request = new AddRepositoryRequest
+            {
+                RepositoryId = new RepositoryId(owner, name),
+            };
+            var result = element.SendSingleResponseMessage(request);
+            engine.GenerateInformation(((AddRepositoryResponse)result).Description);
         }
 
-        private static void RemoveRepo(Element element, string owner, string name)
+        private static void RemoveRepo(IEngine engine, GithubRepositories element, string owner, string name)
         {
-            var request = new RemoveRepositoriesTableRequest($"{owner}/{name}");
-            element.SetParameter(992, JsonConvert.SerializeObject(request));
-        }
+			var request = new RemoveRepositoryRequest
+			{
+				RepositoryId = new RepositoryId(owner, name),
+			};
+			var result = element.SendSingleResponseMessage(request);
+			engine.GenerateInformation(((AddRepositoryResponse)result).Description);
+		}
 
-        private static void Refresh(Element element)
+        private static void Refresh(GithubRepositories element)
         {
-            element.SetParameterByPrimaryKey(21006, "201", 1);
-            element.SetParameterByPrimaryKey(21006, "202", 1);
-            element.SetParameterByPrimaryKey(21006, "203", 1);
-            element.SetParameterByPrimaryKey(21006, "204", 1);
+            //element.SetParameterByPrimaryKey(21006, "201", 1);
+            //element.SetParameterByPrimaryKey(21006, "202", 1);
+            //element.SetParameterByPrimaryKey(21006, "203", 1);
+            //element.SetParameterByPrimaryKey(21006, "204", 1);
         }
     }
 }

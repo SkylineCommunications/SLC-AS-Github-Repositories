@@ -5,14 +5,21 @@ namespace Common.States
 	public enum Statuses
 	{
 		Unknown = -1,
+		Result,
 		Completed,
 		ChooseWorkflow,
+		PrivateRepository,
 		AutomationScriptCI,
 		AutomationScriptCICD,
+		ConnectorCI,
+		NugetCICD,
+		InternalNugetCICD,
 	}
 
 	public interface IAddWorkflowState
 	{
-		IAddWorkflowState Transition(Statuses status);
+		Statuses Status { get; }
+
+		IAddWorkflowState Transition(Statuses newStatus);
 	}
 }

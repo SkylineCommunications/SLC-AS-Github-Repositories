@@ -11,6 +11,11 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)AddWorkflowInstance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DomHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\ResultState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\PrivateRepositoryState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\InternalNugetCICDState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\NugetCICDState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)States\ConnectorCIState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\AutomationScriptCICDState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\AutomationScriptCIState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\ChooseState.cs" />

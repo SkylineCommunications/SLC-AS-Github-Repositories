@@ -58,6 +58,8 @@ namespace Github_Repositories_Add_Workflow_1
 	using Newtonsoft.Json;
 
 	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
 	using Skyline.DataMiner.Net.Apps.DataMinerObjectModel;
 	using Skyline.DataMiner.Net.Apps.DataMinerObjectModel.Actions;
 
@@ -78,7 +80,10 @@ namespace Github_Repositories_Add_Workflow_1
 			instance.DataMinerID = input.DataMinerID;
 			instance.ElementID = input.ElementId;
 			instance.RepositoryID = input.RepositoryId;
+			instance.Type = Github_Repositories.Enums.Workflowtype.AutomationScriptCI;
 			instance.Save(helper);
+
+			engine.GenerateInformation(JsonConvert.SerializeObject(instance));
 		}
 
 		[AutomationEntryPoint(AutomationEntryPointType.Types.OnDomAction)]
@@ -90,18 +95,30 @@ namespace Github_Repositories_Add_Workflow_1
 			var instance = new AddWorkflowInstance(helper, instanceId);
 			var newStatus = States.GetState(instance, data.ActionId);
 
+			engine.GenerateInformation(data.ActionId);
+			engine.GenerateInformation(instance.Status.Status.ToString());
+			engine.GenerateInformation(JsonConvert.SerializeObject(instance));
+			engine.GenerateInformation(newStatus.ToString());
+
 			// Transition DOM Instance
 			instance.Status.Transition(newStatus);
+			engine.GenerateInformation("Executes transition.");
+			engine.GenerateInformation(instance.Status.Status.ToString());
+			instance.Save(helper);
+			engine.GenerateInformation("Saved instance.");
 
 			// If state is completed then we can add the workflow to the repository
-			if (newStatus != Statuses.Completed)
+			if (newStatus != Statuses.Result)
 			{
 				return;
 			}
 
 			var request = WorkflowFactory.Create(instance);
-			var element = engine.FindElement(instance.DataMinerID, instance.ElementID);
-			element.SetParameter(1592, request);
+			var element = new GithubRepositories(engine.GetUserConnection(), instance.DataMinerID, instance.ElementID);
+			var result = (AddWorkflowResponse)element.SendSingleResponseMessage(request);
+			instance.ResultMessage = result.Description;
+			instance.Save(helper);
+			engine.GenerateInformation(result.Description);
 		}
 	}
 }

@@ -18,6 +18,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Skyline.DataMiner.ConnectorAPI.Github.Repositories" Version="1.0.3" />
+    <PackageReference Include="Skyline.DataMiner.Core.DataMinerSystem.Automation" Version="1.1.1.5" />
+    <PackageReference Include="Skyline.DataMiner.Core.InterAppCalls.Common" Version="1.0.0.3" />
     <PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.3.3" />
   </ItemGroup>
   <ProjectExtensions>
