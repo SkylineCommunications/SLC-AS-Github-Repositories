@@ -6,8 +6,8 @@
 
 	public class CompletedState : IAddWorkflowState
 	{
-		private DomHelper helper;
-		private AddWorkflowInstance instance;
+		private readonly DomHelper helper;
+		private readonly AddWorkflowInstance instance;
 
 		public CompletedState(DomHelper helper, AddWorkflowInstance instance)
 		{

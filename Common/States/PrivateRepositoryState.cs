@@ -6,8 +6,8 @@
 
 	public class PrivateRepositoryState : IAddWorkflowState
 	{
-		private DomHelper helper;
-		private AddWorkflowInstance instance;
+		private readonly DomHelper helper;
+		private readonly AddWorkflowInstance instance;
 
 		public PrivateRepositoryState(DomHelper helper, AddWorkflowInstance instance)
 		{

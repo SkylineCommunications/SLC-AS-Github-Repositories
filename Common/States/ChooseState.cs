@@ -10,8 +10,8 @@
 
 	public class ChooseState : IAddWorkflowState
 	{
-		private DomHelper helper;
-		private AddWorkflowInstance instance;
+		private readonly DomHelper helper;
+		private readonly AddWorkflowInstance instance;
 
 		public ChooseState(DomHelper helper, AddWorkflowInstance instance)
 		{

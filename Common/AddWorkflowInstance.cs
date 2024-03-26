@@ -3,6 +3,7 @@
 namespace Common
 {
 	using System;
+	using System.Linq;
 
 	using Common.DomIds;
 	using Common.States;
@@ -13,7 +14,7 @@ namespace Common
 
 	public class AddWorkflowInstance
 	{
-		private DomHelper helper;
+		private readonly DomHelper helper;
 		private DomInstance instance;
 
 		public AddWorkflowInstance(DomHelper helper, DomInstanceId instanceId)
@@ -34,9 +35,9 @@ namespace Common
 		public AddWorkflowInstance(DomHelper helper)
 		{
 			var instances = helper.DomInstances.Read(DomInstanceExposers.DomDefinitionId.Equal(Github_Repositories.Definitions.AddWorkflow.Id));
-			foreach (var instance in instances)
+			foreach (var inst in instances)
 			{
-				helper.DomInstances.Delete(instance);
+				helper.DomInstances.Delete(inst);
 			}
 
 			this.helper = helper;

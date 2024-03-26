@@ -4,13 +4,8 @@
 
 	public class ResultState : IAddWorkflowState
 	{
-		private DomHelper helper;
-		private AddWorkflowInstance instance;
-
 		public ResultState(DomHelper helper, AddWorkflowInstance instance)
 		{
-			this.helper = helper;
-			this.instance = instance;
 		}
 
 		public Statuses Status { get => Statuses.Result; }

@@ -8,8 +8,8 @@ namespace Common.States
 
 	public class InternalNugetCICDState : IAddWorkflowState
 	{
-		private DomHelper helper;
-		private AddWorkflowInstance instance;
+		private readonly DomHelper helper;
+		private readonly AddWorkflowInstance instance;
 
 		public InternalNugetCICDState(DomHelper helper, AddWorkflowInstance instance)
 		{

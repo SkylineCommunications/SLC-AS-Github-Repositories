@@ -6,8 +6,8 @@
 
 	public class AutomationScriptCIState : IAddWorkflowState
 	{
-		private DomHelper helper;
-		private AddWorkflowInstance instance;
+		private readonly DomHelper helper;
+		private readonly AddWorkflowInstance instance;
 
 		public AutomationScriptCIState(DomHelper helper, AddWorkflowInstance instance)
 		{
