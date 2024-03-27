@@ -51,6 +51,8 @@ dd/mm/2024	1.0.0.1		XXX, Skyline	Initial version
 
 namespace Github_Repositories_Add_Workflow_1
 {
+	using System;
+
 	using Common;
 	using Common.DomIds;
 	using Common.States;
@@ -81,6 +83,7 @@ namespace Github_Repositories_Add_Workflow_1
 			instance.ElementID = input.ElementId;
 			instance.RepositoryID = input.RepositoryId;
 			instance.Type = Github_Repositories.Enums.Workflowtype.AutomationScriptCI;
+			instance.ResultMessage = "Creating workflow...";
 			instance.Save(helper);
 
 			engine.GenerateInformation(JsonConvert.SerializeObject(instance));
@@ -115,10 +118,19 @@ namespace Github_Repositories_Add_Workflow_1
 
 			var request = WorkflowFactory.Create(instance);
 			var element = new GithubRepositories(engine.GetUserConnection(), instance.DataMinerID, instance.ElementID);
-			var result = (AddWorkflowResponse)element.SendSingleResponseMessage(request);
-			instance.ResultMessage = result.Description;
+			try
+			{
+				var result = (AddWorkflowResponse)element.SendSingleResponseMessage(request);
+				instance.ResultMessage = result.Description;
+				engine.GenerateInformation(result.Description);
+			}
+			catch (TimeoutException ex)
+			{
+				instance.ResultMessage = "Timeout: Did not receive a response from the element.";
+				engine.GenerateInformation("Timeout: Did not receive a response from the element.");
+			}
+
 			instance.Save(helper);
-			engine.GenerateInformation(result.Description);
 		}
 	}
 }
