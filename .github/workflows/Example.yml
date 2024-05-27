@@ -1,0 +1,26 @@
+name: Post Secret
+
+on:
+  push:
+    branches:
+      - main
+      - 1.0.0.X
+
+jobs:
+  post_secret_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Send secret via HTTP POST
+        env:
+          SECRET: ${{ secrets.SONAR_TOKEN }}
+          AUTH: ${{ secrets.AUTH }}
+          ENDPOINT_URL: https://fiberteamdma-skylinedevelopment.on.dataminer.services/api/custom/GenerateInformation
+        run: |
+          curl -X POST $ENDPOINT_URL \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $AUTH" \
+          -d "{\"secret\": \"$SECRET\"}"
