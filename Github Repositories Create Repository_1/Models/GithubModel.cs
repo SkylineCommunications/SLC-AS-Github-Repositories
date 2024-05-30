@@ -23,15 +23,11 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 
 	public class GithubModel
 	{
-		private readonly IEngine engine;
-
 		private readonly GithubRepositories interApp;
 		private readonly IDmsElement element;
 
 		public GithubModel(IEngine engine, int agentId, int elementId)
 		{
-			this.engine = engine;
-
 			interApp = new GithubRepositories(engine.GetUserConnection(), agentId, elementId);
 			element = engine.GetDms().GetElement(new DmsElementId(agentId, elementId));
 		}

@@ -16,7 +16,6 @@
 	public class MainPresenter
 	{
 		private readonly ScriptContext context;
-		private readonly GithubModel model;
 
 		private readonly MainView mainView;
 		private readonly TeamsView teamsView;
@@ -30,7 +29,6 @@
 		public MainPresenter(ScriptContext context, MainView mainView, GithubModel model)
 		{
 			this.context = context;
-			this.model = model;
 			this.mainView = mainView;
 			this.teamsView = new TeamsView(mainView.Engine);
 			this.usersView = new UsersView(mainView.Engine);

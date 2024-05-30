@@ -15,18 +15,12 @@
 
 	public class UsersPresenter
 	{
-		private readonly ScriptContext context;
 		private readonly GithubModel model;
-
-		private readonly MainView mainView;
 		private readonly UsersView usersView;
 
 		public UsersPresenter(ScriptContext context, MainView mainView, UsersView usersView, GithubModel model)
 		{
-			this.context = context;
 			this.model = model;
-
-			this.mainView = mainView;
 			this.usersView = usersView;
 
 			usersView.Back.Pressed += (sender, e) => context.Controller.ShowDialog(mainView);

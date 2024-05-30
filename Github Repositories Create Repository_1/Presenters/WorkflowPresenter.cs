@@ -20,7 +20,6 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 	{
 		private readonly ScriptContext context;
 		private readonly WorkflowView workflowView;
-		private readonly GithubModel model;
 
 		private readonly ExplanationInputView SonarCloudProjectIdView;
 		private readonly ExplanationInputView SonarCloudTokenView;
@@ -38,7 +37,6 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 		{
 			this.context = context;
 			this.workflowView = workflowView;
-			this.model = model;
 
 			SonarCloudProjectIdView = new SonarCloudProjectIdView(context.Engine);
 			SonarCloudProjectIdView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);

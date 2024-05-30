@@ -13,19 +13,12 @@
 
 	public class TeamsPresenter
 	{
-		private readonly ScriptContext context;
-
-		private readonly MainView mainView;
 		private readonly TeamsView teamsView;
-
 		private readonly GithubModel model;
 
 		public TeamsPresenter(ScriptContext context, MainView mainView, TeamsView teamsView, GithubModel model)
 		{
-			this.context = context;
-			this.mainView = mainView;
 			this.teamsView = teamsView;
-
 			this.model = model;
 
 			teamsView.Back.Pressed += (sender, e) => context.Controller.ShowDialog(mainView);
