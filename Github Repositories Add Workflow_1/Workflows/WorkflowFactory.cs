@@ -7,13 +7,13 @@ namespace Github_Repositories_Add_Workflow_1
 	using Common;
 
 	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages;
 	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
 	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows.Data;
-	using Skyline.DataMiner.Core.InterAppCalls.Common.CallSingle;
 
 	public static class WorkflowFactory
 	{
-		public static Message Create(AddWorkflowInstance instance)
+		public static IGithubRequest Create(AddWorkflowInstance instance)
 		{
 			switch (instance.Type)
 			{

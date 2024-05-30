@@ -62,6 +62,8 @@ namespace Github_Repositories_Add_Workflow_1
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
 	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
+	using Skyline.DataMiner.Core.DataMinerSystem.Automation;
+	using Skyline.DataMiner.Core.DataMinerSystem.Common;
 	using Skyline.DataMiner.Net.Apps.DataMinerObjectModel;
 	using Skyline.DataMiner.Net.Apps.DataMinerObjectModel.Actions;
 
@@ -76,9 +78,20 @@ namespace Github_Repositories_Add_Workflow_1
 		/// <param name="engine">Link with SLAutomation process.</param>
 		public void Run(IEngine engine)
 		{
+			var input = new InputData(engine);
+			var repos = engine.GetDms().GetElement(new DmsElementId(input.DataMinerID, input.ElementId)).GetTable(1000);
+			if (!repos.TryGetRow(input.RepositoryId, out var repo))
+			{
+				throw new Exception("Could not retrieve the selected repository. Is it added to the element?");
+			}
+
+			if (repo.Length < 17 || Convert.ToString(repo[15]) == "-2" || Convert.ToString(repo[16]) == "-2")
+			{
+				throw new Exception("The public key is not available for this repository. You can try to manually poll the repository's public keys by pressing the refresh button on the 'Poll Manager' page. If that doesn't work check if the api token has access to the repository?");
+			}
+
 			var helper = new DomHelper(engine.SendSLNetMessages, Github_Repositories.ModuleId);
 			var instance = new AddWorkflowInstance(helper);
-			var input = new InputData(engine);
 			instance.DataMinerID = input.DataMinerID;
 			instance.ElementID = input.ElementId;
 			instance.RepositoryID = input.RepositoryId;
@@ -98,17 +111,9 @@ namespace Github_Repositories_Add_Workflow_1
 			var instance = new AddWorkflowInstance(helper, instanceId);
 			var newStatus = States.GetState(instance, data.ActionId);
 
-			engine.GenerateInformation(data.ActionId);
-			engine.GenerateInformation(instance.Status.Status.ToString());
-			engine.GenerateInformation(JsonConvert.SerializeObject(instance));
-			engine.GenerateInformation(newStatus.ToString());
-
 			// Transition DOM Instance
 			instance.Status.Transition(newStatus);
-			engine.GenerateInformation("Executes transition.");
-			engine.GenerateInformation(instance.Status.Status.ToString());
 			instance.Save(helper);
-			engine.GenerateInformation("Saved instance.");
 
 			// If state is completed then we can add the workflow to the repository
 			if (newStatus != Statuses.Result)
@@ -120,14 +125,14 @@ namespace Github_Repositories_Add_Workflow_1
 			var element = new GithubRepositories(engine.GetUserConnection(), instance.DataMinerID, instance.ElementID);
 			try
 			{
-				var result = (AddWorkflowResponse)element.SendSingleResponseMessage(request);
+				var result = element.SendSingleResponseMessage(request);
 				instance.ResultMessage = result.Description;
 				engine.GenerateInformation(result.Description);
 			}
 			catch (TimeoutException ex)
 			{
-				instance.ResultMessage = "Timeout: Did not receive a response from the element.";
-				engine.GenerateInformation("Timeout: Did not receive a response from the element.");
+				instance.ResultMessage = "Timeout: Did not receive a response from the repos.";
+				engine.GenerateInformation("Timeout: Did not receive a response from the repos.");
 			}
 
 			instance.Save(helper);

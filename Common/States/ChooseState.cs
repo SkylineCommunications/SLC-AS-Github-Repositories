@@ -1,9 +1,5 @@
 ﻿namespace Common.States
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Text;
-
 	using Common.DomIds;
 
 	using Skyline.DataMiner.Net.Apps.DataMinerObjectModel;

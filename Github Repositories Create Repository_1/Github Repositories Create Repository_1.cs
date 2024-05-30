@@ -1,6 +1,6 @@
 /*
 ****************************************************************************
-*  Copyright (c) 2023,  Skyline Communications NV  All Rights Reserved.    *
+*  Copyright (c) 2024,  Skyline Communications NV  All Rights Reserved.    *
 ****************************************************************************
 
 By using this script, you expressly agree with the usage terms and
@@ -45,22 +45,27 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-dd/mm/2023	1.0.0.1		XXX, Skyline	Initial version
+dd/mm/2024	1.0.0.1		XXX, Skyline	Initial version
 ****************************************************************************
 */
 
 // Ignore Spelling: Github
-namespace Github_Repositories_Add_Remove_Repository_1
+namespace Skyline.DataMiner.Github.Repositories
 {
 	using System;
+	using System.Collections.Generic;
+	using System.Globalization;
+	using System.Text;
 
 	using Skyline.DataMiner.Automation;
-	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
-	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages;
-	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Repositories;
+	using Skyline.DataMiner.Github.Repositories.Models;
+	using Skyline.DataMiner.Github.Repositories.Presenters;
+	using Skyline.DataMiner.Github.Repositories.Views;
+	using Skyline.DataMiner.Utils.InteractiveAutomationScript;
 
 	/// <summary>
 	/// Represents a DataMiner Automation script.
+	/// engine.ShowUI();
 	/// </summary>
 	public class Script
 	{
@@ -70,43 +75,12 @@ namespace Github_Repositories_Add_Remove_Repository_1
 		/// <param name="engine">Link with SLAutomation process.</param>
 		public void Run(IEngine engine)
 		{
-			var agentId = Convert.ToInt32(engine.GetScriptParam("Agent Id").Value);
-			var elementId = Convert.ToInt32(engine.GetScriptParam("Element Id").Value);
-			var name = engine.GetScriptParam("Repo Name").Value.Replace("[", String.Empty).Replace("]", String.Empty).Replace("\"", String.Empty);
-			var owner = engine.GetScriptParam("Repo Owner").Value.Replace("[", String.Empty).Replace("]", String.Empty).Replace("\"", String.Empty);
-			var remove = engine.GetScriptParam("Add or Remove").Value;
+			var context = new ScriptContext(engine);
 
-			var element = new GithubRepositories(engine.GetUserConnection(), agentId, elementId); // engine.FindElement(agentId, elementId);
-
-			if (remove.ToUpper() == "ADD")
-			{
-				AddRepo(engine, element, owner, name);
-			}
-
-			if (remove.ToUpper() == "REMOVE")
-			{
-				RemoveRepo(engine, element, owner, name);
-			}
-		}
-
-		private static void AddRepo(IEngine engine, GithubRepositories element, string owner, string name)
-		{
-			var request = new AddRepositoryRequest
-			{
-				RepositoryId = new RepositoryId(owner, name),
-			};
-			var result = element.SendSingleResponseMessage(request);
-			engine.GenerateInformation(result.Description);
-		}
-
-		private static void RemoveRepo(IEngine engine, GithubRepositories element, string owner, string name)
-		{
-			var request = new RemoveRepositoryRequest
-			{
-				RepositoryId = new RepositoryId(owner, name),
-			};
-			var result = element.SendSingleResponseMessage(request);
-			engine.GenerateInformation(result.Description);
+			var main = new MainView(engine);
+			var model = new GithubModel(engine, context.AgentId, context.ElementId);
+			var presenter = new MainPresenter(context, main, model);
+			context.Controller.Run(main);
 		}
 	}
 }

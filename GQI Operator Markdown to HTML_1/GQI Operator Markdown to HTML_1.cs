@@ -1,6 +1,6 @@
 /*
 ****************************************************************************
-*  Copyright (c) 2023,  Skyline Communications NV  All Rights Reserved.    *
+*  Copyright (c) 2024,  Skyline Communications NV  All Rights Reserved.    *
 ****************************************************************************
 
 By using this script, you expressly agree with the usage terms and
@@ -45,37 +45,62 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-dd/mm/2023	1.0.0.1		AMA, Skyline	Initial version
+dd/mm/2024	1.0.0.1		AMA, Skyline	Initial version
 ****************************************************************************
 */
 
-// Ignore Spelling: Github
-namespace Github_Repositories_Set_Standalone_Parameter_1
+// Ignore Spelling: GQI
+namespace GQI_Operator_Markdown_to_HTML_1
 {
-	using System;
+	using Markdig;
 
-	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.Analytics.GenericInterface;
 
-	/// <summary>
-	/// Represents a DataMiner Automation script.
-	/// </summary>
-	public class Script
+	[GQIMetaData(Name = "Markdown To HTML")]
+	public class MarkdownToHtmlOperator : IGQIColumnOperator, IGQIRowOperator, IGQIInputArguments
 	{
-		/// <summary>
-		/// The script entry point.
-		/// </summary>
-		/// <param name="engine">Link with SLAutomation process.</param>
-		public void Run(IEngine engine)
+		private readonly GQIColumnDropdownArgument _markdownColumnArg = new GQIColumnDropdownArgument("Markdown Column")
 		{
-			engine.SetFlag(RunTimeFlags.NoCheckingSets);
+			IsRequired = true,
+			Types = new[] { GQIColumnType.String },
+		};
 
-			var agentId = Convert.ToInt32(engine.GetScriptParam("Agent Id").Value);
-			var elementId = Convert.ToInt32(engine.GetScriptParam("Element Id").Value);
-			var paramId = Convert.ToInt32(engine.GetScriptParam("Parameter Id").Value);
-			var paramValue = engine.GetScriptParam("Parameter Value").Value.Replace("[", String.Empty).Replace("]", String.Empty).Replace("\"", String.Empty);
+		private readonly GQIStringArgument _resultColumnNameArg = new GQIStringArgument("Result Column Name")
+		{
+			IsRequired = false,
+			DefaultValue = "Rendered HTML",
+		};
 
-			var element = engine.FindElement(agentId, elementId);
-			element.SetParameter(paramId, paramValue);
+		private GQIColumn _markdownColumn;
+		private GQIStringColumn _resultColumn = new GQIStringColumn("Rendered HTML");
+
+		public GQIArgument[] GetInputArguments()
+		{
+			return new GQIArgument[]
+			{
+				_markdownColumnArg,
+				_resultColumnNameArg,
+			};
+		}
+
+		public OnArgumentsProcessedOutputArgs OnArgumentsProcessed(OnArgumentsProcessedInputArgs args)
+		{
+			_markdownColumn = args.GetArgumentValue(_markdownColumnArg);
+			_resultColumn = new GQIStringColumn(args.GetArgumentValue(_resultColumnNameArg));
+			return new OnArgumentsProcessedOutputArgs();
+		}
+
+		public void HandleColumns(GQIEditableHeader header)
+		{
+			header.AddColumns(_resultColumn);
+		}
+
+		public void HandleRow(GQIEditableRow row)
+		{
+			var markdown = row.GetValue<string>(_markdownColumn);
+			var html = Markdown.ToHtml(markdown);
+
+			row.SetValue(_resultColumn, html);
 		}
 	}
 }

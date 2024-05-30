@@ -1,6 +1,6 @@
 /*
 ****************************************************************************
-*  Copyright (c) 2023,  Skyline Communications NV  All Rights Reserved.    *
+*  Copyright (c) 2024,  Skyline Communications NV  All Rights Reserved.    *
 ****************************************************************************
 
 By using this script, you expressly agree with the usage terms and
@@ -45,37 +45,52 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-dd/mm/2023	1.0.0.1		AMA, Skyline	Initial version
+dd/mm/2024	1.0.0.1		AMA, Skyline	Initial version
 ****************************************************************************
 */
 
 // Ignore Spelling: Github
-namespace Github_Repositories_Set_Standalone_Parameter_1
+namespace Get_Github_File_Content_1
 {
-	using System;
+	using Skyline.DataMiner.Analytics.GenericInterface;
 
-	using Skyline.DataMiner.Automation;
-
-	/// <summary>
-	/// Represents a DataMiner Automation script.
-	/// </summary>
-	public class Script
+	public class GetGithubFileContent : IGQIDataSource, IGQIInputArguments, IGQIOnInit, IGQIOnDestroy
 	{
-		/// <summary>
-		/// The script entry point.
-		/// </summary>
-		/// <param name="engine">Link with SLAutomation process.</param>
-		public void Run(IEngine engine)
+		public OnInitOutputArgs OnInit(OnInitInputArgs args)
 		{
-			engine.SetFlag(RunTimeFlags.NoCheckingSets);
+			return new OnInitOutputArgs();
+		}
 
-			var agentId = Convert.ToInt32(engine.GetScriptParam("Agent Id").Value);
-			var elementId = Convert.ToInt32(engine.GetScriptParam("Element Id").Value);
-			var paramId = Convert.ToInt32(engine.GetScriptParam("Parameter Id").Value);
-			var paramValue = engine.GetScriptParam("Parameter Value").Value.Replace("[", String.Empty).Replace("]", String.Empty).Replace("\"", String.Empty);
+		public GQIArgument[] GetInputArguments()
+		{
+			return new GQIArgument[]
+			{
+			};
+		}
 
-			var element = engine.FindElement(agentId, elementId);
-			element.SetParameter(paramId, paramValue);
+		public OnArgumentsProcessedOutputArgs OnArgumentsProcessed(OnArgumentsProcessedInputArgs args)
+		{
+			return new OnArgumentsProcessedOutputArgs();
+		}
+
+		public GQIColumn[] GetColumns()
+		{
+			return new GQIColumn[]
+			{
+			};
+		}
+
+		public GQIPage GetNextPage(GetNextPageInputArgs args)
+		{
+			return new GQIPage(new GQIRow[0])
+			{
+				HasNextPage = false,
+			};
+		}
+
+		public OnDestroyOutputArgs OnDestroy(OnDestroyInputArgs args)
+		{
+			return new OnDestroyOutputArgs();
 		}
 	}
 }

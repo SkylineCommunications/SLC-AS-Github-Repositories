@@ -79,6 +79,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{10AC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Get GitHub Table_1", "Get GitHub Table_1\Get GitHub Table_1.csproj", "{11C2A342-33A2-4858-B558-8E60765E35D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Create Repository", "Github Repositories Create Repository", "{09DEDAEA-64A6-4045-9C10-EB2B075447D7}"
+	ProjectSection(SolutionItems) = preProject
+		Github Repositories Create Repository.xml = Github Repositories Create Repository.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{A1849191-ED23-4C9D-A9AA-90F4A2100851}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Create Repository_1", "Github Repositories Create Repository_1\Github Repositories Create Repository_1.csproj", "{16175312-FA92-4E5E-95AE-AF0E417FAE62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Operators", "Operators", "{36B64461-9031-4752-8285-8A5395182BE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GQI Operator Markdown to HTML", "GQI Operator Markdown to HTML", "{80C6AF24-2582-4992-A82C-392EBB5BE2EA}"
+	ProjectSection(SolutionItems) = preProject
+		GQI Operator Markdown to HTML.xml = GQI Operator Markdown to HTML.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{27363421-4531-4337-B217-D2A3C3CEFFDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GQI Operator Markdown to HTML_1", "GQI Operator Markdown to HTML_1\GQI Operator Markdown to HTML_1.csproj", "{94A4C267-46A0-4A97-9A41-0C4CC967F58C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Get Github File Content", "Get Github File Content", "{B663210F-F005-444B-909A-F87B1B41FCD2}"
+	ProjectSection(SolutionItems) = preProject
+		Get Github File Content.xml = Get Github File Content.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{D2CEB57A-DBA8-44D9-804C-C228CD07F282}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Get Github File Content_1", "Get Github File Content_1\Get Github File Content_1.csproj", "{BD35A920-7491-4C86-8737-9F024C8B9593}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +130,18 @@ Global
 		{11C2A342-33A2-4858-B558-8E60765E35D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11C2A342-33A2-4858-B558-8E60765E35D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11C2A342-33A2-4858-B558-8E60765E35D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16175312-FA92-4E5E-95AE-AF0E417FAE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16175312-FA92-4E5E-95AE-AF0E417FAE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16175312-FA92-4E5E-95AE-AF0E417FAE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16175312-FA92-4E5E-95AE-AF0E417FAE62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94A4C267-46A0-4A97-9A41-0C4CC967F58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A4C267-46A0-4A97-9A41-0C4CC967F58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A4C267-46A0-4A97-9A41-0C4CC967F58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A4C267-46A0-4A97-9A41-0C4CC967F58C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD35A920-7491-4C86-8737-9F024C8B9593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD35A920-7491-4C86-8737-9F024C8B9593}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD35A920-7491-4C86-8737-9F024C8B9593}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD35A920-7491-4C86-8737-9F024C8B9593}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,11 +163,22 @@ Global
 		{06E31F8D-CEE0-4326-9754-8FBFA36485A6} = {DCE72521-F1E6-42BE-9DB3-9C19913DA3E3}
 		{10ACE89E-D6C8-47CA-8529-0A7E20404257} = {06E31F8D-CEE0-4326-9754-8FBFA36485A6}
 		{11C2A342-33A2-4858-B558-8E60765E35D1} = {10ACE89E-D6C8-47CA-8529-0A7E20404257}
+		{09DEDAEA-64A6-4045-9C10-EB2B075447D7} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
+		{A1849191-ED23-4C9D-A9AA-90F4A2100851} = {09DEDAEA-64A6-4045-9C10-EB2B075447D7}
+		{16175312-FA92-4E5E-95AE-AF0E417FAE62} = {A1849191-ED23-4C9D-A9AA-90F4A2100851}
+		{36B64461-9031-4752-8285-8A5395182BE9} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
+		{80C6AF24-2582-4992-A82C-392EBB5BE2EA} = {36B64461-9031-4752-8285-8A5395182BE9}
+		{27363421-4531-4337-B217-D2A3C3CEFFDA} = {80C6AF24-2582-4992-A82C-392EBB5BE2EA}
+		{94A4C267-46A0-4A97-9A41-0C4CC967F58C} = {27363421-4531-4337-B217-D2A3C3CEFFDA}
+		{B663210F-F005-444B-909A-F87B1B41FCD2} = {DCE72521-F1E6-42BE-9DB3-9C19913DA3E3}
+		{D2CEB57A-DBA8-44D9-804C-C228CD07F282} = {B663210F-F005-444B-909A-F87B1B41FCD2}
+		{BD35A920-7491-4C86-8737-9F024C8B9593} = {D2CEB57A-DBA8-44D9-804C-C228CD07F282}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE357FD7-C2CA-4152-A59F-2F2F7BAF839C}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Common\Common.projitems*{16175312-fa92-4e5e-95ae-af0e417fae62}*SharedItemsImports = 5
 		Common\Common.projitems*{e573a8a0-89fa-4668-b70f-eac3e94e1534}*SharedItemsImports = 13
 		Common\Common.projitems*{e9aa68d4-ab23-45e2-92ae-abebc9e66bc1}*SharedItemsImports = 5
 	EndGlobalSection
