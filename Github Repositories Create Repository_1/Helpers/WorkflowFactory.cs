@@ -15,7 +15,7 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 		{
 			switch (context.WorkflowType)
 			{
-				case Repositories.WorkflowType.AutomationScript:
+				case WorkflowType.AutomationScriptCI:
 					return new AddAutomationScriptCIWorkflowRequest
 					{
 						RepositoryId = new RepositoryId(context.Id.Split('/')[0], context.Id.Split('/')[1]),
@@ -27,19 +27,19 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 						},
 					};
 
-				//case Common.DomIds.Github_Repositories.Enums.Workflowtype.AutomationScriptCICD:
-				//	return new AddAutomationScriptCICDWorkflowRequest
-				//	{
-				//		RepositoryId = new RepositoryId(instance.RepositoryID.Split('/')[0], instance.RepositoryID.Split('/')[1]),
-				//		Data = new AutomationScriptCICDWorkflowData
-				//		{
-				//			DataMinerKey = instance.AutomationScriptCICD_DataMinerDeployKey,
-				//			SonarCloudProjectID = instance.AutomationScriptCICD_SonarCloudProjectID,
-				//			SonarToken = instance.AutomationScriptCICD_IsPrivateRepository ? instance.PrivateSonarCloudToken : String.Empty,
-				//		},
-				//	};
+				case WorkflowType.AutomationScriptCICD:
+					return new AddAutomationScriptCICDWorkflowRequest
+					{
+						RepositoryId = new RepositoryId(context.Id.Split('/')[0], context.Id.Split('/')[1]),
+						Data = new AutomationScriptCICDWorkflowData
+						{
+							DataMinerKey = context.DataMinerDeployKey,
+							SonarCloudProjectID = context.SonarCloudProjectID,
+							SonarToken = context.Public ? string.Empty : context.SonarCloudToken,
+						},
+					};
 
-				case Repositories.WorkflowType.Connector:
+				case WorkflowType.ConnectorCI:
 					return new AddConnectorCIWorkflowRequest
 					{
 						RepositoryId = new RepositoryId(context.Id.Split('/')[0], context.Id.Split('/')[1]),
@@ -51,7 +51,7 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 						},
 					};
 
-				case Repositories.WorkflowType.Nuget:
+				case WorkflowType.NugetSolutionCICD:
 					return new AddNugetCICDWorkflowRequest
 					{
 						RepositoryId = new RepositoryId(context.Id.Split('/')[0], context.Id.Split('/')[1]),
@@ -62,7 +62,7 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 						},
 					};
 
-				case Repositories.WorkflowType.InternalNuget:
+				case WorkflowType.InternalNugetSolutionCICD:
 					return new AddInternalNugetCICDWorkflowRequest
 					{
 						RepositoryId = new RepositoryId(context.Id.Split('/')[0], context.Id.Split('/')[1]),

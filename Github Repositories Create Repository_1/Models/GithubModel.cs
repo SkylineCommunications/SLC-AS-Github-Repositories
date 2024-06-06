@@ -20,6 +20,8 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 	using Skyline.DataMiner.Core.DataMinerSystem.Automation;
 	using Skyline.DataMiner.Core.DataMinerSystem.Common;
 	using Skyline.DataMiner.Github.Repositories.Helpers;
+	using Skyline.DataMiner.Net.Authentication.UserIdUtil;
+	using Skyline.DataMiner.Net.Messages.SLDataGateway;
 
 	public class GithubModel
 	{
@@ -147,7 +149,7 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 			var pattern = "(\\[(?<content_type>.*)\\]\\s?)?(?<file_name>.*)";
 			foreach (var file in context.Files)
 			{
-				var contentPath = RepositoryContent.RepositoryContentPathMapping[context.WorkflowType];
+				var contentPath = RepositoryContent.RepositoryContentPathMapping[context.RepositoryType];
 				if (!contentPath.EndsWith("\\"))
 				{
 					contentPath += "\\";
@@ -181,7 +183,7 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 			}
 
 			// Create workflow
-			if(context.WorkflowType != Repositories.WorkflowType.None)
+			if(context.WorkflowType.HasValue)
 			{
 				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Creating Workflow..."));
 
@@ -237,6 +239,17 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 
 				CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully added '{user.Name}'"));
 			}
+
+			// Add Topics
+			CreationProgress?.Invoke(this, new StatusProgressEventArgs("Adding topics..."));
+			var topicsResult = AddRepositoryTopics(context);
+			if (!topicsResult.Success)
+			{
+				CreationProgress?.Invoke(this, new StatusProgressEventArgs(topicsResult.Description));
+				return false;
+			}
+
+			CreationProgress?.Invoke(this, new StatusProgressEventArgs("Adding topics..."));
 
 			CreationProgress?.Invoke(this, new StatusProgressEventArgs("Successfully created the repository"));
 			return true;
@@ -480,6 +493,30 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 				{
 					Success = false,
 					Description = $"Timeout. Could not verify if the user '{user.Name}', was added or not.",
+					Request = request,
+				};
+			}
+		}
+
+		private AddRepositoryTopicsResponse AddRepositoryTopics(RepositoryContext context)
+		{
+			var request = new AddRepositoryTopicsRequest
+			{
+				RepositoryId = new RepositoryId(context.Organization, context.Name),
+				Topics = TopicFactory.Create(context).Select(topic => topic.TopicString()),
+			};
+
+			try
+			{
+				var response = interApp.SendSingleResponseMessage<AddRepositoryTopicsResponse>(request);
+				return response;
+			}
+			catch (TimeoutException)
+			{
+				return new AddRepositoryTopicsResponse
+				{
+					Success = false,
+					Description = $"Timeout. Could not verify if the topics: {String.Join(", ", request.Topics.Select(topic => $"'{topic}'"))}, were added or not.",
 					Request = request,
 				};
 			}

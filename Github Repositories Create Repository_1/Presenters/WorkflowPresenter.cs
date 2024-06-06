@@ -4,17 +4,13 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Linq;
 	using System.Text;
-	using System.Threading.Tasks;
 
-	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
 	using Skyline.DataMiner.Github.Repositories.Helpers;
 	using Skyline.DataMiner.Github.Repositories.Models;
 	using Skyline.DataMiner.Github.Repositories.Views;
 	using Skyline.DataMiner.Github.Repositories.Views.Explanations;
-	using Skyline.DataMiner.Net.Messages.SLDataGateway;
-	using Skyline.DataMiner.Utils.InteractiveAutomationScript;
 
 	public class WorkflowPresenter
 	{
@@ -76,12 +72,13 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 			Invisible();
 			switch (repositoryContext.WorkflowType)
 			{
-				case WorkflowType.None:
+				case null:
 					workflowView.Status.Text = "Nothing to do here, you can go to the next page.";
 					break;
 
-				case WorkflowType.AutomationScript:
-				case WorkflowType.Connector:
+				case WorkflowType.AutomationScriptCI:
+				case WorkflowType.AutomationScriptCICD:
+				case WorkflowType.ConnectorCI:
 					//workflowView.SonarCloudProjectIdButton.IsVisible = true;
 					SonarCloudProjectIdView.Input.Text = "Generate";
 					workflowView.DataMinerToken.IsVisible = true;
@@ -99,7 +96,7 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 
 					break;
 
-				case WorkflowType.InternalNuget:
+				case WorkflowType.InternalNugetSolutionCICD:
 					//workflowView.SonarCloudProjectIdButton.IsVisible = true;
 					SonarCloudProjectIdView.Input.Text = "Generate";
 					workflowView.GithubToken.IsVisible = true;
@@ -110,7 +107,7 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 					};
 					break;
 
-				case WorkflowType.Nuget:
+				case WorkflowType.NugetSolutionCICD:
 					//workflowView.SonarCloudProjectIdButton.IsVisible = true;
 					SonarCloudProjectIdView.Input.Text = "Generate";
 					workflowView.NugetApiToken.IsVisible = true;
@@ -159,7 +156,7 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 
 		private void NextButton_Pressed(object sender, EventArgs e)
 		{
-			if(!Validate(out var errors))
+			if (!Validate(out var errors))
 			{
 				workflowView.Status.Text += errors;
 				return;

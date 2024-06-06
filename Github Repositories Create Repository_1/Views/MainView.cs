@@ -6,6 +6,8 @@ namespace Skyline.DataMiner.Github.Repositories.Views
 	using System.Linq;
 
 	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Repositories;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
 	using Skyline.DataMiner.Utils.InteractiveAutomationScript;
 
 	public class MainView : Dialog<StackPanel>
@@ -20,11 +22,12 @@ namespace Skyline.DataMiner.Github.Repositories.Views
 					.Select(x => Option.Create(x.FriendlyDescription(), x)));
 
 			// Excluding public nugets, because you need permission for those.
+			this.WorkflowType.Options.Add(Option.Create<WorkflowType?>("None", null));
 			this.WorkflowType.Options.AddRange(
 				Enum.GetValues(typeof(WorkflowType))
 					.Cast<WorkflowType>()
-					.Where(x => x != Repositories.WorkflowType.Nuget)
-					.Select(x => Option.Create(x.FriendlyDescription(), x)));
+					.Where(x => x != ConnectorAPI.Github.Repositories.InterAppMessages.Workflows.WorkflowType.NugetSolutionCICD)
+					.Select(x => Option.Create<WorkflowType?>(x.FriendlyDescription(), x)));
 
 			var form = new FormPanel();
 			form.Add("Repository WorkflowType", RepositoryType);
@@ -49,7 +52,7 @@ namespace Skyline.DataMiner.Github.Repositories.Views
 
 		public ICheckBox Public { get; } = new CheckBox { IsChecked = false };
 
-		public DropDown<WorkflowType> WorkflowType { get; } = new DropDown<WorkflowType>();
+		public DropDown<WorkflowType?> WorkflowType { get; } = new DropDown<WorkflowType?>();
 
 		public IButton Teams { get; } = new Button("Add...");
 

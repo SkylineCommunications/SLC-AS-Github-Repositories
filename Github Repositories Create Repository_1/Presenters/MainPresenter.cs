@@ -8,6 +8,7 @@
 	using System.Threading.Tasks;
 
 	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
 	using Skyline.DataMiner.Github.Repositories.Helpers;
 	using Skyline.DataMiner.Github.Repositories.Models;
 	using Skyline.DataMiner.Github.Repositories.Views;
@@ -74,7 +75,7 @@
 				Public = mainView.Public.IsChecked,
 				Teams = teamsView.Teams.Values.ToList(),
 				Users = usersView.Users.Values.ToList(),
-				Files = RepositoryContent.GetFilesByRepositoryType(mainView.WorkflowType.SelectedValue).ToList(),
+				Files = RepositoryContent.GetFilesByRepositoryType(mainView.RepositoryType.SelectedValue).ToList(),
 			};
 
 			workflowPresenter.Load(repoContext);
@@ -84,14 +85,14 @@
 		private bool Validate()
 		{
 			// Check for Skyline Guidelines in the name
-			var pattern1 = $"([a-zA-Z]+)-({mainView.RepositoryType.SelectedValue.ShortDescription()})-(.*)";
+			var pattern1 = $"([a-zA-Z]+)-({mainView.RepositoryType.SelectedValue.GetTypesInitials()})-(.*)";
 			var match = Regex.Match(mainView.Name.Text, pattern1);
 
 			context.Engine.GenerateInformation(match.Success.ToString());
 			if(!match.Success)
 			{
 				mainView.Name.ValidationState = UIValidationState.Invalid;
-				mainView.Name.ValidationText = $"The name of a '{mainView.RepositoryType.SelectedValue.FriendlyDescription()}' repository should be in the following format: [Customer Initial]-{mainView.RepositoryType.SelectedValue.ShortDescription()}-[Name]";
+				mainView.Name.ValidationText = $"The name of a '{mainView.RepositoryType.SelectedValue.FriendlyDescription()}' repository should be in the following format: [Customer Initial]-{mainView.RepositoryType.SelectedValue.GetTypesInitials()}-[Name]";
 				return false;
 			}
 

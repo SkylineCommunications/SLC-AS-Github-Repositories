@@ -9,8 +9,6 @@ namespace Skyline.DataMiner.Github.Repositories
 
 	using Newtonsoft.Json.Linq;
 
-	using Skyline.DataMiner.Github.Repositories.Attributes;
-
 	public static class Extensions
 	{
 		public static string FriendlyDescription<T>(this T requestType) where T : Enum
@@ -37,19 +35,6 @@ namespace Skyline.DataMiner.Github.Repositories
 			}
 
 			return (T)Enum.Parse(enumType, description);
-		}
-
-		public static string ShortDescription<T>(this T requestType) where T : Enum
-		{
-			var name = requestType.ToString();
-			FieldInfo field = typeof(T).GetField(name);
-			object[] attribs = field.GetCustomAttributes(typeof(ShortDescriptionAttribute), false);
-			if (attribs.Length > 0)
-			{
-				return ((ShortDescriptionAttribute)attribs[0]).Description;
-			}
-
-			return name;
 		}
 
 		public static bool IsJsonArray(this string json)

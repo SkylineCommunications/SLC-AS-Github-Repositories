@@ -6,17 +6,28 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 	using System.Collections.Generic;
 	using System.IO;
 
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Repositories;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
+
 	public static class RepositoryContent
 	{
-		public static readonly IReadOnlyDictionary<WorkflowType, string> RepositoryContentPathMapping = new Dictionary<WorkflowType, string>
+		public static readonly IReadOnlyDictionary<RepositoryType, string> RepositoryContentPathMapping = new Dictionary<RepositoryType, string>
 		{
-			{ WorkflowType.AutomationScript,          @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
-			{ WorkflowType.Connector,                 @"C:\Skyline DataMiner\Documents\Github Repositories\Connector" },
-			{ WorkflowType.InternalNuget,             @"C:\Skyline DataMiner\Documents\Github Repositories\Internal Nuget" },
-			{ WorkflowType.Nuget,                     @"C:\Skyline DataMiner\Documents\Github Repositories\Nuget" },
+			{ RepositoryType.Automation_Script,             @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
+			{ RepositoryType.Process_Automation_Script,     @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
+			{ RepositoryType.GQI_Data_Source,               @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
+			{ RepositoryType.GQI_Operator,					@"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
+			{ RepositoryType.Life_Service_Orchestration,    @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
+			{ RepositoryType.Profile_Load_Script,           @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
+			{ RepositoryType.User_Defined_API,              @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
+
+			{ RepositoryType.Connector,                     @"C:\Skyline DataMiner\Documents\Github Repositories\Connector" },
+
+			{ RepositoryType.Solution,                      @"C:\Skyline DataMiner\Documents\Github Repositories\Internal Nuget" },
+			{ RepositoryType.Nuget,                         @"C:\Skyline DataMiner\Documents\Github Repositories\Nuget" },
 		};
 
-		public static string[] GetFilesByRepositoryType(WorkflowType type)
+		public static string[] GetFilesByRepositoryType(RepositoryType type)
 		{
 			if (!RepositoryContentPathMapping.TryGetValue(type, out var contentPath))
 			{
@@ -24,24 +35,6 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 			}
 
 			string[] files = Directory.GetFiles(contentPath, "*", SearchOption.AllDirectories);
-			switch (type)
-			{
-				case WorkflowType.AutomationScript:
-					break;
-
-				case WorkflowType.Connector:
-					break;
-
-				case WorkflowType.InternalNuget:
-					break;
-
-				case WorkflowType.Nuget:
-					break;
-
-				default:
-					throw new NotSupportedException("The given repository type is not supported yet.");
-			}
-
 			return files;
 		}
 
@@ -60,7 +53,7 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 			if (content.Contains("{{SonarCloudProjectId}}"))
 			{
 				var sonarCloudId = context.SonarCloudProjectID;
-				if(sonarCloudId == "Generate")
+				if (sonarCloudId == "Generate")
 				{
 					sonarCloudId = "TODO_SonarCloudProjectId";
 				}

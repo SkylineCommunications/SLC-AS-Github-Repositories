@@ -56,7 +56,6 @@ namespace Github_Repositories_Add_Remove_Repository_1
 
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
-	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages;
 	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Repositories;
 
 	/// <summary>

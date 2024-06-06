@@ -5,13 +5,15 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 	using System;
 	using System.Collections.Generic;
 
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Repositories;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
 	using Skyline.DataMiner.Github.Repositories.Models;
 
 	public class RepositoryContext
 	{
 		public RepositoryType RepositoryType { get; set; }
 
-		public WorkflowType WorkflowType { get; set; }
+		public WorkflowType? WorkflowType { get; set; }
 
 		public string Id { get; set; }
 
