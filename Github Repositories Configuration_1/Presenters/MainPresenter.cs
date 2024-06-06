@@ -10,17 +10,10 @@ namespace Github_Repositories_Configuration_1.Presenters
 
 	internal class MainPresenter
 	{
-		private readonly ScriptContext context;
-		private readonly MainView mainView;
-
-		// Settings
 		private readonly SonarCloudTokenView sonarCloudTokenView;
 
 		public MainPresenter(ScriptContext context, MainView mainView)
 		{
-			this.context = context;
-			this.mainView = mainView;
-
 			sonarCloudTokenView = new SonarCloudTokenView(context.Engine);
 			sonarCloudTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(mainView);
 
