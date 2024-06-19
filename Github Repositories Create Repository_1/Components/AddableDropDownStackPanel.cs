@@ -11,7 +11,7 @@ namespace Skyline.DataMiner.Github.Repositories.Components
 
 	public class AddableDropDownStackPanel<T> : StackPanel
 	{
-		private Dictionary<IButton, RemovableLabel<T>> items = new Dictionary<IButton, RemovableLabel<T>>();
+		private readonly Dictionary<IButton, RemovableLabel<T>> items = new Dictionary<IButton, RemovableLabel<T>>();
 
 		public AddableDropDownStackPanel()
 		{
@@ -46,7 +46,7 @@ namespace Skyline.DataMiner.Github.Repositories.Components
 			}
 		}
 
-		public new void Clear(IEngine engine = null)
+		public void Clear(IEngine engine = null)
 		{
 			foreach (var item in items.Values)
 			{

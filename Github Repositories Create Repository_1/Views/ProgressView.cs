@@ -2,8 +2,6 @@
 
 namespace Skyline.DataMiner.Github.Repositories.Views
 {
-	using System;
-
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.Utils.InteractiveAutomationScript;
 

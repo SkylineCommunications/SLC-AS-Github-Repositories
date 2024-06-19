@@ -49,6 +49,7 @@ dd/mm/2024	1.0.0.1		XXX, Skyline	Initial version
 ****************************************************************************
 */
 
+// Ignore Spelling: Github
 namespace Github_Repositories_Add_Workflow_1
 {
 	using System;
@@ -82,12 +83,12 @@ namespace Github_Repositories_Add_Workflow_1
 			var repos = engine.GetDms().GetElement(new DmsElementId(input.DataMinerID, input.ElementId)).GetTable(1000);
 			if (!repos.TryGetRow(input.RepositoryId, out var repo))
 			{
-				throw new Exception("Could not retrieve the selected repository. Is it added to the element?");
+				throw new KeyNotFoundInTableException("Could not retrieve the selected repository. Is it added to the element?");
 			}
 
 			if (repo.Length < 17 || Convert.ToString(repo[15]) == "-2" || Convert.ToString(repo[16]) == "-2")
 			{
-				throw new Exception("The public key is not available for this repository. You can try to manually poll the repository's public keys by pressing the refresh button on the 'Poll Manager' page. If that doesn't work check if the api token has access to the repository?");
+				throw new AccessViolationException("The public key is not available for this repository. You can try to manually poll the repository's public keys by pressing the refresh button on the 'Poll Manager' page. If that doesn't work check if the api token has access to the repository?");
 			}
 
 			var helper = new DomHelper(engine.SendSLNetMessages, Github_Repositories.ModuleId);
@@ -129,7 +130,7 @@ namespace Github_Repositories_Add_Workflow_1
 				instance.ResultMessage = result.Description;
 				engine.GenerateInformation(result.Description);
 			}
-			catch (TimeoutException ex)
+			catch (TimeoutException)
 			{
 				instance.ResultMessage = "Timeout: Did not receive a response from the repos.";
 				engine.GenerateInformation("Timeout: Did not receive a response from the repos.");

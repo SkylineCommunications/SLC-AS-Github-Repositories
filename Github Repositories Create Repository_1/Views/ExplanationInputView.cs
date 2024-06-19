@@ -13,15 +13,12 @@ namespace Skyline.DataMiner.Github.Repositories.Views
 		{
 			Title = title;
 			Panel.Add(Explanation);
-			//Panel.Add(Link);
 			Panel.Add(Input);
 			Panel.Add(new WhiteSpace());
 			Panel.Add(BackButton);
 		}
 
 		public ILabel Explanation { get; } = new Label(String.Empty);
-
-		public IButton Link { get; } = new Button("Link");
 
 		public ITextBox Input { get; } = new TextBox();
 

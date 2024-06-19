@@ -30,10 +30,10 @@ namespace Skyline.DataMiner.Github.Repositories.Views
 					.Select(x => Option.Create<WorkflowType?>(x.FriendlyDescription(), x)));
 
 			var form = new FormPanel();
-			form.Add("Repository WorkflowType", RepositoryType);
+			form.Add("Repository Type", RepositoryType);
 			form.Add("Repository Name", Name);
 			form.Add("Repository Description", Description);
-			form.Add("Workflow WorkflowType", WorkflowType);
+			form.Add("Workflow Type", WorkflowType);
 			form.Add("Public", Public);
 			form.Add("Teams", Teams);
 			form.Add("Users", Users);

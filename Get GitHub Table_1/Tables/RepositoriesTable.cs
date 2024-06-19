@@ -1,4 +1,6 @@
-﻿namespace Get_GitHub_Table_1.Tables
+﻿// Ignore Spelling: Github dms
+
+namespace Get_GitHub_Table_1.Tables
 {
 	using System;
 	using System.Collections.Generic;

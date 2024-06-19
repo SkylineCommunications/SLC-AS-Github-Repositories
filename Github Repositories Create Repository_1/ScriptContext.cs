@@ -1,13 +1,11 @@
-﻿namespace Skyline.DataMiner.Github.Repositories
+﻿// Ignore Spelling: Github
+
+namespace Skyline.DataMiner.Github.Repositories
 {
 	using System;
-	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
 
 	using Newtonsoft.Json;
-	using Newtonsoft.Json.Linq;
 
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.Utils.InteractiveAutomationScript;
@@ -36,7 +34,7 @@
 
 		private string[] GetScriptParam(string name)
 		{
-			var rawValue = Engine.GetScriptParam(name).Value;
+			var rawValue = Engine.GetScriptParam(name)?.Value;
 			if (String.IsNullOrEmpty(rawValue))
 			{
 				throw new ArgumentException($"Script Param '{name}' cannot be left empty.");

@@ -17,11 +17,11 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 		private readonly ScriptContext context;
 		private readonly WorkflowView workflowView;
 
-		private readonly ExplanationInputView SonarCloudProjectIdView;
-		private readonly ExplanationInputView SonarCloudTokenView;
-		private readonly ExplanationInputView DataMinerTokenView;
-		private readonly ExplanationInputView GithubTokenView;
-		private readonly ExplanationInputView NugetApiTokenView;
+		private readonly ExplanationInputView sonarCloudProjectIdView;
+		private readonly ExplanationInputView sonarCloudTokenView;
+		private readonly ExplanationInputView dataMinerTokenView;
+		private readonly ExplanationInputView githubTokenView;
+		private readonly ExplanationInputView nugetApiTokenView;
 
 		private readonly ProgressPresenter progressPresenter;
 		private readonly ProgressView progressView;
@@ -34,30 +34,30 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 			this.context = context;
 			this.workflowView = workflowView;
 
-			SonarCloudProjectIdView = new SonarCloudProjectIdView(context.Engine);
-			SonarCloudProjectIdView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
-			SonarCloudProjectIdView.BackButton.Pressed += ClearStatus;
-			workflowView.SonarCloudProjectIdButton.Pressed += (sender, e) => context.Controller.ShowDialog(SonarCloudProjectIdView);
+			sonarCloudProjectIdView = new SonarCloudProjectIdView(context.Engine);
+			sonarCloudProjectIdView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
+			sonarCloudProjectIdView.BackButton.Pressed += ClearStatus;
+			workflowView.SonarCloudProjectIdButton.Pressed += (sender, e) => context.Controller.ShowDialog(sonarCloudProjectIdView);
 
-			SonarCloudTokenView = new SonarCloudTokenView(context.Engine);
-			SonarCloudTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
-			SonarCloudTokenView.BackButton.Pressed += ClearStatus;
-			workflowView.SonarCloudTokenButton.Pressed += (sender, e) => context.Controller.ShowDialog(SonarCloudTokenView);
+			sonarCloudTokenView = new SonarCloudTokenView(context.Engine);
+			sonarCloudTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
+			sonarCloudTokenView.BackButton.Pressed += ClearStatus;
+			workflowView.SonarCloudTokenButton.Pressed += (sender, e) => context.Controller.ShowDialog(sonarCloudTokenView);
 
-			DataMinerTokenView = new DataMinerTokenView(context.Engine);
-			DataMinerTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
-			DataMinerTokenView.BackButton.Pressed += ClearStatus;
-			workflowView.DataMinerToken.Pressed += (sender, e) => context.Controller.ShowDialog(DataMinerTokenView);
+			dataMinerTokenView = new DataMinerTokenView(context.Engine);
+			dataMinerTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
+			dataMinerTokenView.BackButton.Pressed += ClearStatus;
+			workflowView.DataMinerToken.Pressed += (sender, e) => context.Controller.ShowDialog(dataMinerTokenView);
 
-			GithubTokenView = new GithubTokenView(context.Engine);
-			GithubTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
-			GithubTokenView.BackButton.Pressed += ClearStatus;
-			workflowView.GithubToken.Pressed += (sender, e) => context.Controller.ShowDialog(GithubTokenView);
+			githubTokenView = new GithubTokenView(context.Engine);
+			githubTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
+			githubTokenView.BackButton.Pressed += ClearStatus;
+			workflowView.GithubToken.Pressed += (sender, e) => context.Controller.ShowDialog(githubTokenView);
 
-			NugetApiTokenView = new NugetApiTokenView(context.Engine);
-			NugetApiTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
-			NugetApiTokenView.BackButton.Pressed += ClearStatus;
-			workflowView.NugetApiToken.Pressed += (sender, e) => context.Controller.ShowDialog(NugetApiTokenView);
+			nugetApiTokenView = new NugetApiTokenView(context.Engine);
+			nugetApiTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
+			nugetApiTokenView.BackButton.Pressed += ClearStatus;
+			workflowView.NugetApiToken.Pressed += (sender, e) => context.Controller.ShowDialog(nugetApiTokenView);
 
 			progressView = new ProgressView(context.Engine);
 			progressView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
@@ -79,43 +79,50 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 				case WorkflowType.AutomationScriptCI:
 				case WorkflowType.AutomationScriptCICD:
 				case WorkflowType.ConnectorCI:
-					//workflowView.SonarCloudProjectIdButton.IsVisible = true;
-					SonarCloudProjectIdView.Input.Text = "Generate";
+					sonarCloudProjectIdView.Input.Text = "Generate";
 					workflowView.DataMinerToken.IsVisible = true;
 					requiredInputs = new List<ExplanationInputView>
 					{
-						SonarCloudProjectIdView,
-						DataMinerTokenView,
+						sonarCloudProjectIdView,
+						dataMinerTokenView,
 					};
 					if (!repositoryContext.Public)
 					{
-						// workflowView.SonarCloudTokenButton.IsVisible = true;
-						SonarCloudTokenView.Input.Text = "Generate";
-						requiredInputs.Add(SonarCloudTokenView);
+						sonarCloudTokenView.Input.Text = "Generate";
+						requiredInputs.Add(sonarCloudTokenView);
 					}
 
 					break;
 
 				case WorkflowType.InternalNugetSolutionCICD:
-					//workflowView.SonarCloudProjectIdButton.IsVisible = true;
-					SonarCloudProjectIdView.Input.Text = "Generate";
+					sonarCloudProjectIdView.Input.Text = "Generate";
 					workflowView.GithubToken.IsVisible = true;
 					requiredInputs = new List<ExplanationInputView>
 					{
-						SonarCloudProjectIdView,
-						GithubTokenView,
+						sonarCloudProjectIdView,
+						githubTokenView,
 					};
+					if (!repositoryContext.Public)
+					{
+						sonarCloudTokenView.Input.Text = "Generate";
+						requiredInputs.Add(sonarCloudTokenView);
+					}
+
 					break;
 
 				case WorkflowType.NugetSolutionCICD:
-					//workflowView.SonarCloudProjectIdButton.IsVisible = true;
-					SonarCloudProjectIdView.Input.Text = "Generate";
+					sonarCloudProjectIdView.Input.Text = "Generate";
 					workflowView.NugetApiToken.IsVisible = true;
 					requiredInputs = new List<ExplanationInputView>
 					{
-						SonarCloudProjectIdView,
-						NugetApiTokenView,
+						sonarCloudProjectIdView,
+						nugetApiTokenView,
 					};
+					if (!repositoryContext.Public)
+					{
+						sonarCloudTokenView.Input.Text = "Generate";
+						requiredInputs.Add(sonarCloudTokenView);
+					}
 					break;
 
 				default:
@@ -162,11 +169,11 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 				return;
 			}
 
-			repositoryContext.SonarCloudProjectID = SonarCloudProjectIdView.Input.Text;
-			repositoryContext.SonarCloudToken = SonarCloudTokenView.Input.Text;
-			repositoryContext.DataMinerDeployKey = DataMinerTokenView.Input.Text;
-			repositoryContext.GithubToken = GithubTokenView.Input.Text;
-			repositoryContext.NugetApiKey = NugetApiTokenView.Input.Text;
+			repositoryContext.SonarCloudProjectID = sonarCloudProjectIdView.Input.Text;
+			repositoryContext.SonarCloudToken = sonarCloudTokenView.Input.Text;
+			repositoryContext.DataMinerDeployKey = dataMinerTokenView.Input.Text;
+			repositoryContext.GithubToken = githubTokenView.Input.Text;
+			repositoryContext.NugetApiKey = nugetApiTokenView.Input.Text;
 			progressPresenter.Load(repositoryContext);
 			context.Controller.ShowDialog(progressView);
 		}

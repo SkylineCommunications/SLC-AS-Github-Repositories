@@ -45,7 +45,7 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-dd/mm/2024	1.0.0.1		XXX, Skyline	Initial version
+dd/mm/2024	1.0.0.1		AMA, Skyline	Initial version
 ****************************************************************************
 */
 
@@ -53,9 +53,6 @@ dd/mm/2024	1.0.0.1		XXX, Skyline	Initial version
 namespace Github_Repositories_Configuration_1
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Globalization;
-	using System.Text;
 
 	using Github_Repositories_Configuration_1.Presenters;
 	using Github_Repositories_Configuration_1.Views;
@@ -64,7 +61,7 @@ namespace Github_Repositories_Configuration_1
 
 	/// <summary>
 	/// Represents a DataMiner Automation script.
-	/// engine.ShowUI();
+	/// engine.ShowUI(); .
 	/// </summary>
 	public class Script
 	{

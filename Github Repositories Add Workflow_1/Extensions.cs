@@ -1,10 +1,8 @@
-﻿namespace Github_Repositories_Add_Workflow_1
+﻿// Ignore Spelling: Github
+
+namespace Github_Repositories_Add_Workflow_1
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
 
 	using Skyline.DataMiner.Core.DataMinerSystem.Common;
 

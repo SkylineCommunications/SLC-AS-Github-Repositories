@@ -29,16 +29,18 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 
 		public string SonarCloudToken { get; set; }
 
+		public string SonarCloudBadgeToken { get; set; }
+
 		public string DataMinerDeployKey { get; set; }
 
 		public string GithubToken { get; set; }
 
 		public string NugetApiKey { get; set; }
 
-		public List<Team> Teams { get; set; } = new List<Team>();
+		public List<Team> Teams { get; } = new List<Team>();
 
-		public List<User> Users { get; set; } = new List<User>();
+		public List<User> Users { get; } = new List<User>();
 
-		public List<string> Files { get; set; } = new List<string>();
+		public List<string> Files { get; } = new List<string>();
 	}
 }

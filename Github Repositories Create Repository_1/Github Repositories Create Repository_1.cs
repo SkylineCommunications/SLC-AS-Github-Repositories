@@ -45,27 +45,21 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-dd/mm/2024	1.0.0.1		XXX, Skyline	Initial version
+dd/mm/2024	1.0.0.1		AMA, Skyline	Initial version
 ****************************************************************************
 */
 
 // Ignore Spelling: Github
 namespace Skyline.DataMiner.Github.Repositories
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Globalization;
-	using System.Text;
-
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.Github.Repositories.Models;
 	using Skyline.DataMiner.Github.Repositories.Presenters;
 	using Skyline.DataMiner.Github.Repositories.Views;
-	using Skyline.DataMiner.Utils.InteractiveAutomationScript;
 
 	/// <summary>
 	/// Represents a DataMiner Automation script.
-	/// engine.ShowUI();
+	/// engine.ShowUI(); .
 	/// </summary>
 	public class Script
 	{

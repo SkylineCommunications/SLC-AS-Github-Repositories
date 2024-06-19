@@ -1,18 +1,16 @@
-﻿namespace Skyline.DataMiner.Github.Repositories.Presenters
+﻿// Ignore Spelling: Github
+
+namespace Skyline.DataMiner.Github.Repositories.Presenters
 {
 	using System;
-	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
 	using System.Text.RegularExpressions;
-	using System.Threading.Tasks;
 
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
 	using Skyline.DataMiner.Github.Repositories.Helpers;
 	using Skyline.DataMiner.Github.Repositories.Models;
 	using Skyline.DataMiner.Github.Repositories.Views;
-	using Skyline.DataMiner.Utils.InteractiveAutomationScript;
 
 	public class MainPresenter
 	{
@@ -73,10 +71,10 @@
 				Name = mainView.Name.Text,
 				Description = mainView.Description.Text,
 				Public = mainView.Public.IsChecked,
-				Teams = teamsView.Teams.Values.ToList(),
-				Users = usersView.Users.Values.ToList(),
-				Files = RepositoryContent.GetFilesByRepositoryType(mainView.RepositoryType.SelectedValue).ToList(),
 			};
+			repoContext.Teams.AddRange(teamsView.Teams.Values);
+			repoContext.Users.AddRange(usersView.Users.Values);
+			repoContext.Files.AddRange(RepositoryContent.GetFilesByRepositoryType(mainView.RepositoryType.SelectedValue));
 
 			workflowPresenter.Load(repoContext);
 			context.Controller.ShowDialog(workflowView);

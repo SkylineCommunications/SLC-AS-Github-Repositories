@@ -20,9 +20,8 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 			{ RepositoryType.Life_Service_Orchestration,    @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
 			{ RepositoryType.Profile_Load_Script,           @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
 			{ RepositoryType.User_Defined_API,              @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
-
+			{ RepositoryType.DIS_Macro,			            @"C:\Skyline DataMiner\Documents\Github Repositories\Automation Script" },
 			{ RepositoryType.Connector,                     @"C:\Skyline DataMiner\Documents\Github Repositories\Connector" },
-
 			{ RepositoryType.Solution,                      @"C:\Skyline DataMiner\Documents\Github Repositories\Internal Nuget" },
 			{ RepositoryType.Nuget,                         @"C:\Skyline DataMiner\Documents\Github Repositories\Nuget" },
 		};
@@ -59,6 +58,17 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 				}
 
 				content = content.Replace("{{SonarCloudProjectId}}", sonarCloudId);
+			}
+
+			if (content.Contains("{{SonarCloudBadgeToken}}"))
+			{
+				var sonarCloudBadgeToken = context.SonarCloudBadgeToken;
+				if (String.IsNullOrEmpty(sonarCloudBadgeToken))
+				{
+					sonarCloudBadgeToken = "TODO_SonarCloudProjectBadgeToken";
+				}
+
+				content = content.Replace("{{SonarCloudBadgeToken}}", sonarCloudBadgeToken);
 			}
 
 			return content;

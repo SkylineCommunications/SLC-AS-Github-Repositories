@@ -53,7 +53,7 @@ namespace Skyline.DataMiner.Github.Repositories
 
 	public static class LocalStorage
 	{
-		private static readonly string SonarTokenPath = @"C:\Skyline DataMiner\Documents\Github Repositories\SonarToken.key";
+		private const string SonarTokenPath = @"C:\Skyline DataMiner\Documents\Github Repositories\SonarToken.key";
 
 		public static string ReadSonarToken()
 		{

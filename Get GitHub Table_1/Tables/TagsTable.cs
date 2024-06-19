@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: Sha
+﻿// Ignore Spelling: Sha dms
 
 namespace Get_GitHub_Table_1.Tables
 {

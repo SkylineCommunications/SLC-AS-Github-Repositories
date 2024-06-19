@@ -88,6 +88,8 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 
 		public bool CreateRepository(RepositoryContext context)
 		{
+			var hasErrors = false;
+
 			// Init Progress
 			CreationProgress?.Invoke(this, new StatusProgressEventArgs("Creating Repository..."));
 
@@ -122,7 +124,6 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 				else
 				{
 					CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
-					return false;
 				}
 			}
 
@@ -140,7 +141,23 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 				else
 				{
 					CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
-					return false;
+					hasErrors = true;
+				}
+			}
+
+			// Fetch the sonar cloud project information
+			if (!String.IsNullOrEmpty(context.SonarCloudProjectID) &&
+				context.SonarCloudProjectID != "Generate")
+			{
+				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Fetching Sonar Cloud Project Information..."));
+
+				if (RetrieveSonarCloudProjectComponent(context, out var description))
+				{
+					CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully fetched Sonar Cloud Project with id '{context.SonarCloudProjectID}'"));
+				}
+				else
+				{
+					CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
 				}
 			}
 
@@ -176,10 +193,12 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 				if (!result.Success)
 				{
 					CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Failed to create or verify that file '{fileName}', was created."));
-					return false;
+					hasErrors = true;
 				}
-
-				CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully added '{fileName}'"));
+				else
+				{
+					CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully added '{fileName}'"));
+				}
 			}
 
 			// Create workflow
@@ -188,9 +207,10 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Creating Workflow..."));
 
 				// Wait for the public key to be polled
-				for(int i = 0; i < 10; i++)
+				var keyId = Convert.ToString(element.GetTable(1000).GetRow(context.Id)[15]);
+				for (int i = 0; i < 10; i++)
 				{
-					var keyId = Convert.ToString(element.GetTable(1000).GetRow(context.Id)[15]);
+					keyId = Convert.ToString(element.GetTable(1000).GetRow(context.Id)[15]);
 					if (String.IsNullOrEmpty(keyId) || keyId == "-2")
 					{
 						CreationProgress?.Invoke(this, new StatusProgressEventArgs("Waiting on public keys..."));
@@ -202,14 +222,22 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 					}
 				}
 
-				var workflowResult = CreateRepositoryWorkflow(context);
-				if (!workflowResult.Success)
+				if (String.IsNullOrEmpty(keyId) || keyId == "-2")
 				{
-					CreationProgress?.Invoke(this, new StatusProgressEventArgs(workflowResult.Description));
-					return false;
+					CreationProgress?.Invoke(this, new StatusProgressEventArgs("Could not fetch public keys..."));
+					hasErrors = true;
 				}
+				else
+				{
+					var workflowResult = CreateRepositoryWorkflow(context);
+					if (!workflowResult.Success)
+					{
+						CreationProgress?.Invoke(this, new StatusProgressEventArgs(workflowResult.Description));
+						hasErrors = true;
+					}
 
-				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Successfully added workflow"));
+					CreationProgress?.Invoke(this, new StatusProgressEventArgs("Successfully added workflow"));
+				}
 			}
 
 			// Add Teams
@@ -220,10 +248,12 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 				if (!teamResult.Success)
 				{
 					CreationProgress?.Invoke(this, new StatusProgressEventArgs(teamResult.Description));
-					return false;
+					hasErrors = true;
 				}
-
-				CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully added '{team.Name}'"));
+				else
+				{
+					CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully added '{team.Name}'"));
+				}
 			}
 
 			// Add Users
@@ -234,10 +264,12 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 				if (!userResult.Success)
 				{
 					CreationProgress?.Invoke(this, new StatusProgressEventArgs(userResult.Description));
-					return false;
+					hasErrors = true;
 				}
-
-				CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully added '{user.Name}'"));
+				else
+				{
+					CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully added '{user.Name}'"));
+				}
 			}
 
 			// Add Topics
@@ -246,12 +278,23 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 			if (!topicsResult.Success)
 			{
 				CreationProgress?.Invoke(this, new StatusProgressEventArgs(topicsResult.Description));
-				return false;
+				hasErrors = true;
+			}
+			else
+			{
+				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Successfully added topics."));
 			}
 
-			CreationProgress?.Invoke(this, new StatusProgressEventArgs("Adding topics..."));
+			// Handle errors
+			if (hasErrors)
+			{
+				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Created repository, but encountered some errors."));
+			}
+			else
+			{
+				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Successfully created the repository"));
+			}
 
-			CreationProgress?.Invoke(this, new StatusProgressEventArgs("Successfully created the repository"));
 			return true;
 		}
 
@@ -376,8 +419,50 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 					return false;
 				}
 
-				var result = JsonConvert.DeserializeObject<SonarCloudProjectResult>(content.Result).Projects.SingleOrDefault().ProjectKey;
-				context.SonarCloudProjectID = result;
+				var result = JsonConvert.DeserializeObject<SonarCloudProjectResult>(content.Result).Projects.SingleOrDefault()?.ProjectKey;
+				if (!String.IsNullOrEmpty(result))
+				{
+					context.SonarCloudProjectID = result;
+				}
+
+				description = String.Empty;
+				return true;
+			}
+		}
+
+		private bool RetrieveSonarCloudProjectComponent(RepositoryContext context, out string description)
+		{
+			using (var client = new HttpClient())
+			{
+				var uriBuilder = new UriBuilder(Endpoints.SonarCloudProjectComponent);
+				if (String.IsNullOrEmpty(context.SonarCloudProjectID))
+				{
+					description = $"Invalid Id found for repository '{context.Id}'";
+					return false;
+				}
+
+				var data = new SonarCloudProjectComponentData
+				{
+					ProjectId = context.SonarCloudProjectID,
+				};
+
+				uriBuilder.Query = data.ToGetQuery();
+
+				client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", LocalStorage.ReadSonarToken());
+				var post = client.GetAsync(new Uri(uriBuilder.ToString()));
+				post.Wait();
+
+				var content = post.Result.Content.ReadAsStringAsync();
+				content.Wait();
+
+				if (!post.Result.IsSuccessStatusCode)
+				{
+					description = content.Result;
+					return false;
+				}
+
+				var result = JsonConvert.DeserializeObject<SonarCloudProjectComponentResult>(content.Result);
+				context.SonarCloudBadgeToken = result?.BadgeToken;
 
 				description = String.Empty;
 				return true;
@@ -503,7 +588,7 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 			var request = new AddRepositoryTopicsRequest
 			{
 				RepositoryId = new RepositoryId(context.Organization, context.Name),
-				Topics = TopicFactory.Create(context).Select(topic => topic.TopicString()),
+				Topics = TopicFactory.Create(context).Select(topic => topic.TopicString()).ToList(),
 			};
 
 			try

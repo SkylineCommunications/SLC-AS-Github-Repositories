@@ -1,10 +1,8 @@
-﻿namespace Skyline.DataMiner.Github.Repositories.Presenters
+﻿// Ignore Spelling: Github
+
+namespace Skyline.DataMiner.Github.Repositories.Presenters
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
 
 	using Skyline.DataMiner.Github.Repositories.Helpers;
 	using Skyline.DataMiner.Github.Repositories.Models;
