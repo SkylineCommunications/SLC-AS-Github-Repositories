@@ -118,11 +118,6 @@ namespace Github_Repositories_Execute_Workflow_1
                 throw new KeyNotFoundInTableException("Could not retrieve the selected workflow. Please check it is available on the element.");
             }
 
-            // if (workflow.Length < 17 || Convert.ToString(workflow[15]) == "-2" || Convert.ToString(workflow[16]) == "-2")
-            // {
-            //     throw new AccessViolationException("The public key is not available for this repository. You can try to manually poll the repository's public keys by pressing the refresh button on the 'Poll Manager' page. If that doesn't work check if the api token has access to the repository?");
-            // }
-
             var repoIdInfo = Convert.ToString(workflowRow[0]).Split('/');
             var owner = repoIdInfo[0];
             var repoName = repoIdInfo[1];
@@ -132,14 +127,18 @@ namespace Github_Repositories_Execute_Workflow_1
             var value = engine.GetScriptParam("Inputs").Value;
             var inputs = String.IsNullOrWhiteSpace(value) || value == "none" ? new Dictionary<string, string>() : JsonConvert.DeserializeObject<Dictionary<string, string>>(value);
 
+            var reference = engine.GetScriptParam("Reference").Value;
+
             var executeWorkflowRequest = new ExecuteWorkflowRequest
             {
                 RepositoryId = new RepositoryId(owner, repoName),
                 WorkflowInputs = inputs,
                 WorkflowId = workflowId,
+                WorkflowReference = reference,
             };
 
             var response = element.SendSingleResponseMessage(executeWorkflowRequest);
+            engine.Log($"Execute workflow response: {response.Description}");
         }
     }
 }
