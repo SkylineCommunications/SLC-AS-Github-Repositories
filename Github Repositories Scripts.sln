@@ -117,6 +117,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{3A29
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Configuration_1", "Github Repositories Configuration_1\Github Repositories Configuration_1.csproj", "{94880E3D-BF84-47CC-95CF-69B4C1193C20}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Execute Workflow", "Github Repositories Execute Workflow", "{44D27D96-764A-4B5B-AEC0-93E8BB64CD01}"
+	ProjectSection(SolutionItems) = preProject
+		Github Repositories Execute Workflow.xml = Github Repositories Execute Workflow.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{740D1C05-A84E-4C4D-91AD-6097A330A1DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories Execute Workflow_1", "Github Repositories Execute Workflow_1\Github Repositories Execute Workflow_1.csproj", "{9E8AFC76-522E-48B4-90CB-19074EECB6BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -155,6 +164,10 @@ Global
 		{94880E3D-BF84-47CC-95CF-69B4C1193C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94880E3D-BF84-47CC-95CF-69B4C1193C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94880E3D-BF84-47CC-95CF-69B4C1193C20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E8AFC76-522E-48B4-90CB-19074EECB6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E8AFC76-522E-48B4-90CB-19074EECB6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E8AFC76-522E-48B4-90CB-19074EECB6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E8AFC76-522E-48B4-90CB-19074EECB6BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,12 +202,16 @@ Global
 		{FD9A93BC-57C1-4A34-A3A8-3BB6B776B60E} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
 		{3A295736-6D21-4F7C-B5F7-8320C5626BC6} = {FD9A93BC-57C1-4A34-A3A8-3BB6B776B60E}
 		{94880E3D-BF84-47CC-95CF-69B4C1193C20} = {3A295736-6D21-4F7C-B5F7-8320C5626BC6}
+		{44D27D96-764A-4B5B-AEC0-93E8BB64CD01} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
+		{740D1C05-A84E-4C4D-91AD-6097A330A1DA} = {44D27D96-764A-4B5B-AEC0-93E8BB64CD01}
+		{9E8AFC76-522E-48B4-90CB-19074EECB6BD} = {740D1C05-A84E-4C4D-91AD-6097A330A1DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE357FD7-C2CA-4152-A59F-2F2F7BAF839C}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Common\Common.projitems*{16175312-fa92-4e5e-95ae-af0e417fae62}*SharedItemsImports = 5
+		Common\Common.projitems*{9e8afc76-522e-48b4-90cb-19074eecb6bd}*SharedItemsImports = 5
 		Common\Common.projitems*{e573a8a0-89fa-4668-b70f-eac3e94e1534}*SharedItemsImports = 13
 		Common\Common.projitems*{e9aa68d4-ab23-45e2-92ae-abebc9e66bc1}*SharedItemsImports = 5
 	EndGlobalSection
