@@ -9,6 +9,7 @@ namespace Skyline.DataMiner.Github.Repositories
 
 	using Skyline.DataMiner.Automation;
 	using Skyline.DataMiner.Utils.InteractiveAutomationScript;
+	using Skyline.DataMiner.Utils.SecureCoding.SecureSerialization.Json.Newtonsoft;
 
 	public class ScriptContext
 	{
@@ -42,7 +43,7 @@ namespace Skyline.DataMiner.Github.Repositories
 
 			if (rawValue.IsJsonArray())
 			{
-				return JsonConvert.DeserializeObject<string[]>(rawValue);
+				return SecureNewtonsoftDeserialization.DeserializeObject<string[]>(rawValue);
 			}
 			else
 			{

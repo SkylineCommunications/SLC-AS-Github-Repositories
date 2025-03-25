@@ -6,7 +6,7 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 
 	using Newtonsoft.Json;
 
-	// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+	// Root myDeserializedClass = SecureNewtonsoftDeserialization.DeserializeObject<Root>(myJsonResponse);
 	public class Project
 	{
 		[JsonProperty("projectKey")]

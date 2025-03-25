@@ -6,7 +6,7 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 
 	using Newtonsoft.Json;
 
-	// Root myDeserializedClass = JsonConvert.DeserializeObject<SonarCloudProjectComponentResult>(myJsonResponse);
+	// Root myDeserializedClass = SecureNewtonsoftDeserialization.DeserializeObject<SonarCloudProjectComponentResult>(myJsonResponse);
 	public class Alm
 	{
 		[JsonProperty("key")]

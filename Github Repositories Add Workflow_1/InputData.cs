@@ -8,6 +8,7 @@ namespace Github_Repositories_Add_Workflow_1
 	using Newtonsoft.Json;
 
 	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.Utils.SecureCoding.SecureSerialization.Json.Newtonsoft;
 
 	public class InputData
 	{
@@ -19,7 +20,7 @@ namespace Github_Repositories_Add_Workflow_1
 
 			DataMinerID = Convert.ToInt32(dataMinerId);
 			ElementId = Convert.ToInt32(elementId);
-			RepositoryId = JsonConvert.DeserializeObject<List<string>>(repositoryId)[0];
+			RepositoryId = SecureNewtonsoftDeserialization.DeserializeObject<List<string>>(repositoryId)[0];
 		}
 
 		public int DataMinerID { get; }

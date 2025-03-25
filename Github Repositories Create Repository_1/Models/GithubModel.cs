@@ -22,6 +22,7 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 	using Skyline.DataMiner.Github.Repositories.Helpers;
 	using Skyline.DataMiner.Net.Authentication.UserIdUtil;
 	using Skyline.DataMiner.Net.Messages.SLDataGateway;
+	using Skyline.DataMiner.Utils.SecureCoding.SecureSerialization.Json.Newtonsoft;
 
 	public class GithubModel
 	{
@@ -419,7 +420,7 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 					return false;
 				}
 
-				var result = JsonConvert.DeserializeObject<SonarCloudProjectResult>(content.Result).Projects.SingleOrDefault()?.ProjectKey;
+				var result = SecureNewtonsoftDeserialization.DeserializeObject<SonarCloudProjectResult>(content.Result).Projects.SingleOrDefault()?.ProjectKey;
 				if (!String.IsNullOrEmpty(result))
 				{
 					context.SonarCloudProjectID = result;
@@ -461,7 +462,7 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 					return false;
 				}
 
-				var result = JsonConvert.DeserializeObject<SonarCloudProjectComponentResult>(content.Result);
+				var result = SecureNewtonsoftDeserialization.DeserializeObject<SonarCloudProjectComponentResult>(content.Result);
 				context.SonarCloudBadgeToken = result?.BadgeToken;
 
 				description = String.Empty;
@@ -495,7 +496,7 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 					return false;
 				}
 
-				var result = JsonConvert.DeserializeObject<SonarCloudGenerateTokenResult>(content.Result).Token;
+				var result = SecureNewtonsoftDeserialization.DeserializeObject<SonarCloudGenerateTokenResult>(content.Result).Token;
 				context.SonarCloudToken = result;
 
 				description = String.Empty;

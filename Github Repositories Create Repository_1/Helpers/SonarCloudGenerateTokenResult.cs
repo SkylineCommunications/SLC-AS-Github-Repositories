@@ -6,7 +6,7 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 
 	using Newtonsoft.Json;
 
-	// Root myDeserializedClass = JsonConvert.DeserializeObject<SonarCloudGenerateTokenResult>(myJsonResponse);
+	// Root myDeserializedClass = SecureNewtonsoftDeserialization.DeserializeObject<SonarCloudGenerateTokenResult>(myJsonResponse);
 	public class SonarCloudGenerateTokenResult
 	{
 		[JsonProperty("login")]
