@@ -9,9 +9,9 @@ namespace Github_Repositories_InputData
 
 	using Skyline.DataMiner.Automation;
 
-	public class InputData
+	public class ScriptContext
 	{
-		public InputData(IEngine engine)
+		public ScriptContext(IEngine engine)
 		{
 			var dataMinerId = engine.GetScriptParam(10).Value;
 			var elementId = engine.GetScriptParam(11).Value;

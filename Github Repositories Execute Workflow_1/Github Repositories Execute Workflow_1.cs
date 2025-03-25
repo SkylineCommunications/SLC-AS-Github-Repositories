@@ -109,7 +109,7 @@ namespace Github_Repositories_Execute_Workflow_1
 
 		private void RunSafe(IEngine engine)
 		{
-			var input = new InputData(engine);
+			var input = new ScriptContext(engine);
 			var workflows = engine.GetDms().GetElement(new DmsElementId(input.DataMinerID, input.ElementId)).GetTable(1600);
 			if (!workflows.TryGetRow(input.RowKey, out var workflowRow))
 			{
