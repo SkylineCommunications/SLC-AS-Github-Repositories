@@ -1,32 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
-    <Company>Skyline Communications</Company>
-    <Copyright>© Skyline Communications</Copyright>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-debug.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DefineConstants>$(DefineConstants);DCFv1;DBInfo;ALARM_SQUASHING</DefineConstants>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Skyline.DataMiner.ConnectorAPI.Github.Repositories" Version="1.0.7-prerelease2" />
-    <PackageReference Include="Skyline.DataMiner.Core.DataMinerSystem.Automation" Version="1.1.2.2" />
-    <PackageReference Include="Skyline.DataMiner.Core.DataMinerSystem.Common" Version="1.1.2.2" />
-    <PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.3.2" />
-    <PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="1.2.5" />
-  </ItemGroup>
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties DisLinkedXmlFile="..\Github Repositories Execute Workflow.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
-    </VisualStudio>
-  </ProjectExtensions>
-  <Import Project="..\Common\Common.projitems" Label="Shared" />
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<Company>Skyline Communications</Company>
+		<Copyright>© Skyline Communications</Copyright>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugType>full</DebugType>
+		<CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-debug.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<CodeAnalysisRuleSet>..\Internal\Code Analysis\qaction-release.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);DCFv1;DBInfo;ALARM_SQUASHING</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Skyline.DataMiner.ConnectorAPI.Github.Repositories" Version="1.0.7" />
+		<PackageReference Include="Skyline.DataMiner.Core.DataMinerSystem.Automation" Version="1.1.2.2" />
+		<PackageReference Include="Skyline.DataMiner.Core.DataMinerSystem.Common" Version="1.1.2.2" />
+		<PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.3.2" />
+		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding" Version="1.2.5" />
+	</ItemGroup>
+	<ProjectExtensions>
+		<VisualStudio>
+			<UserProperties DisLinkedXmlFile="..\Github Repositories Execute Workflow.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
+		</VisualStudio>
+	</ProjectExtensions>
+	<Import Project="..\Common\Common.projitems" Label="Shared" />
+	<ItemGroup>
+		<PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="1.2.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 </Project>

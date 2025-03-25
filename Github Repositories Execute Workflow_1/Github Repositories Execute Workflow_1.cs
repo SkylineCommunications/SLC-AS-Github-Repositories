@@ -45,100 +45,98 @@ Revision History:
 
 DATE		VERSION		AUTHOR			COMMENTS
 
-dd/mm/2025	1.0.0.1		XXX, Skyline	Initial version
+25/03/2025	1.0.0.1		BSM, Skyline	Initial version
 ****************************************************************************
 */
 
+// Ignore Spelling: Github
 namespace Github_Repositories_Execute_Workflow_1
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Text;
-    using Common;
-    using Common.DomIds;
-    using Github_Repositories_Extensions;
-    using Github_Repositories_InputData;
-    using Newtonsoft.Json;
-    using Skyline.DataMiner.Automation;
-    using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
-    using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
-    using Skyline.DataMiner.Core.DataMinerSystem.Automation;
-    using Skyline.DataMiner.Core.DataMinerSystem.Common;
-    using Skyline.DataMiner.Net.Apps.DataMinerObjectModel;
+	using System;
+	using System.Collections.Generic;
+	using Github_Repositories_Extensions;
 
-    /// <summary>
-    /// Represents a DataMiner Automation script.
-    /// </summary>
+	using Github_Repositories_InputData;
+
+	using Skyline.DataMiner.Automation;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories;
+	using Skyline.DataMiner.ConnectorAPI.Github.Repositories.InterAppMessages.Workflows;
+	using Skyline.DataMiner.Core.DataMinerSystem.Automation;
+	using Skyline.DataMiner.Core.DataMinerSystem.Common;
+	using Skyline.DataMiner.Utils.SecureCoding.SecureSerialization.Json.Newtonsoft;
+
+	/// <summary>
+	/// Represents a DataMiner Automation script.
+	/// </summary>
 	public class Script
-    {
-        /// <summary>
-        /// The script entry point.
-        /// </summary>
-        /// <param name="engine">Link with SLAutomation process.</param>
-        public void Run(IEngine engine)
-        {
-            try
-            {
-                RunSafe(engine);
-            }
-            catch (ScriptAbortException)
-            {
-                // Catch normal abort exceptions (engine.ExitFail or engine.ExitSuccess)
-                throw; // Comment if it should be treated as a normal exit of the script.
-            }
-            catch (ScriptForceAbortException)
-            {
-                // Catch forced abort exceptions, caused via external maintenance messages.
-                throw;
-            }
-            catch (ScriptTimeoutException)
-            {
-                // Catch timeout exceptions for when a script has been running for too long.
-                throw;
-            }
-            catch (InteractiveUserDetachedException)
-            {
-                // Catch a user detaching from the interactive script by closing the window.
-                // Only applicable for interactive scripts, can be removed for non-interactive scripts.
-                throw;
-            }
-            catch (Exception e)
-            {
-                engine.ExitFail("Run|Something went wrong: " + e);
-            }
-        }
+	{
+		/// <summary>
+		/// The script entry point.
+		/// </summary>
+		/// <param name="engine">Link with SLAutomation process.</param>
+		public void Run(IEngine engine)
+		{
+			try
+			{
+				RunSafe(engine);
+			}
+			catch (ScriptAbortException)
+			{
+				// Catch normal abort exceptions (engine.ExitFail or engine.ExitSuccess)
+				throw; // Comment if it should be treated as a normal exit of the script.
+			}
+			catch (ScriptForceAbortException)
+			{
+				// Catch forced abort exceptions, caused via external maintenance messages.
+				throw;
+			}
+			catch (ScriptTimeoutException)
+			{
+				// Catch timeout exceptions for when a script has been running for too long.
+				throw;
+			}
+			catch (InteractiveUserDetachedException)
+			{
+				// Catch a user detaching from the interactive script by closing the window.
+				// Only applicable for interactive scripts, can be removed for non-interactive scripts.
+				throw;
+			}
+			catch (Exception e)
+			{
+				engine.ExitFail("Run|Something went wrong: " + e);
+			}
+		}
 
-        private void RunSafe(IEngine engine)
-        {
-            var input = new InputData(engine);
-            var workflows = engine.GetDms().GetElement(new DmsElementId(input.DataMinerID, input.ElementId)).GetTable(1600);
-            if (!workflows.TryGetRow(input.RowKey, out var workflowRow))
-            {
-                throw new KeyNotFoundInTableException("Could not retrieve the selected workflow. Please check it is available on the element.");
-            }
+		private void RunSafe(IEngine engine)
+		{
+			var input = new InputData(engine);
+			var workflows = engine.GetDms().GetElement(new DmsElementId(input.DataMinerID, input.ElementId)).GetTable(1600);
+			if (!workflows.TryGetRow(input.RowKey, out var workflowRow))
+			{
+				throw new KeyNotFoundInTableException("Could not retrieve the selected workflow. Please check it is available on the element.");
+			}
 
-            var repoIdInfo = Convert.ToString(workflowRow[0]).Split('/');
-            var owner = repoIdInfo[0];
-            var repoName = repoIdInfo[1];
-            var workflowId = repoIdInfo[repoIdInfo.Length - 1];
+			var repoIdInfo = Convert.ToString(workflowRow[0]).Split('/');
+			var owner = repoIdInfo[0];
+			var repoName = repoIdInfo[1];
+			var workflowId = repoIdInfo[repoIdInfo.Length - 1];
 
-            var element = new GithubRepositories(engine.GetUserConnection(), input.DataMinerID, input.ElementId);
-            var value = engine.GetScriptParam("Inputs").Value;
-            var inputs = String.IsNullOrWhiteSpace(value) || value == "none" ? new Dictionary<string, string>() : JsonConvert.DeserializeObject<Dictionary<string, string>>(value);
+			var element = new GithubRepositories(engine.GetUserConnection(), input.DataMinerID, input.ElementId);
+			var value = engine.GetScriptParam("Inputs").Value;
+			var inputs = String.IsNullOrWhiteSpace(value) || value == "none" ? new Dictionary<string, object>() : SecureNewtonsoftDeserialization.DeserializeObject<Dictionary<string, object>>(value);
 
-            var reference = engine.GetScriptParam("Reference").Value;
+			var reference = engine.GetScriptParam("Reference").Value;
 
-            var executeWorkflowRequest = new ExecuteWorkflowRequest
-            {
-                RepositoryId = new RepositoryId(owner, repoName),
-                WorkflowInputs = inputs,
-                WorkflowId = workflowId,
-                WorkflowReference = reference,
-            };
+			var executeWorkflowRequest = new ExecuteWorkflowRequest
+			{
+				RepositoryId = new RepositoryId(owner, repoName),
+				WorkflowInputs = inputs,
+				WorkflowId = workflowId,
+				WorkflowReference = reference,
+			};
 
-            var response = element.SendSingleResponseMessage(executeWorkflowRequest);
-            engine.Log($"Execute workflow response: {response.Description}");
-        }
-    }
+			var response = element.SendSingleResponseMessage(executeWorkflowRequest);
+			engine.Log($"Execute workflow response: {response.Description}");
+		}
+	}
 }
