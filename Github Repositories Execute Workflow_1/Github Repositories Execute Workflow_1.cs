@@ -123,7 +123,7 @@ namespace Github_Repositories_Execute_Workflow_1
 
 			var element = new GithubRepositories(engine.GetUserConnection(), input.DataMinerID, input.ElementId);
 			var value = engine.GetScriptParam("Inputs").Value;
-			var inputs = String.IsNullOrWhiteSpace(value) || value == "none" ? new Dictionary<string, object>() : SecureNewtonsoftDeserialization.DeserializeObject<Dictionary<string, object>>(value);
+			var inputs = String.IsNullOrWhiteSpace(value) || value == "none" ? new Dictionary<string, string>() : SecureNewtonsoftDeserialization.DeserializeObject<Dictionary<string, string>>(value);
 
 			var reference = engine.GetScriptParam("Reference").Value;
 

@@ -18,19 +18,17 @@
     <DefineConstants>$(DefineConstants);DCFv1;DBInfo;ALARM_SQUASHING</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Skyline.DataMiner.ConnectorAPI.Github.Repositories" Version="1.0.7" />
+    <PackageReference Include="Skyline.DataMiner.ConnectorAPI.Github.Repositories" Version="1.0.8" />
     <PackageReference Include="Skyline.DataMiner.Core.DataMinerSystem.Common" Version="1.1.2.2" />
     <PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.3.2" />
+    <PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties DisLinkedXmlFile="..\Get GitHub Table.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
     </VisualStudio>
   </ProjectExtensions>
-  <ItemGroup>
-    <PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="1.2.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
 </Project>

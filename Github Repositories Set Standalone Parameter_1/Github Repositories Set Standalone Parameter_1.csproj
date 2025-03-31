@@ -20,6 +20,10 @@
   <ItemGroup>
     <PackageReference Include="Skyline.DataMiner.Dev.Automation" Version="10.4.3.2" />
     <PackageReference Include="Skyline.DataMiner.Utils.InteractiveAutomationScriptToolkit.Preview" Version="0.0.0" />
+    <PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -30,10 +34,4 @@
       <UserProperties DisLinkedXmlFile="..\Github Repositories Set Standalone Parameter.xml" DisProjectType="automationScriptProject" DisLinkId="1" />
     </VisualStudio>
   </ProjectExtensions>
-  <ItemGroup>
-    <PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="1.2.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
 </Project>
