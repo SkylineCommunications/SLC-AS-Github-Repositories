@@ -3,7 +3,7 @@
   <PropertyGroup>
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>e573a8a0-89fa-4668-b70f-eac3e94e1534</SharedGUID>
+    <SharedGUID>ec972fc6-2128-4914-ad05-343929e3465a</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>Common</Import_RootNamespace>
@@ -22,5 +22,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)States\CompletedState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\IAddWorkflowState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)States\States.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)States\" />
   </ItemGroup>
 </Project>

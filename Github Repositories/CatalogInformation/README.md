@@ -4,7 +4,7 @@
 
 This Solution is a visual layer on top of the Github Repositories Connector that allows you to monitor and control GitHub repositories. It uses the GitHub API to poll the repos and execute actions on them.
 
-![General](./Github%20Repositories/CatalogInformation/Images/OrganizationsView.png)
+![General](./Images/OrganizationsView.png)
 
 ## Getting Started
 

@@ -1,130 +1,46 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.5.33502.453
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{04EC5556-07B7-49D7-8B3A-FF10EBF353D7}"
-	ProjectSection(SolutionItems) = preProject
-		Internal\.editorconfig = Internal\.editorconfig
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories Set Standalone Parameter", "Github Repositories Set Standalone Parameter\Github Repositories Set Standalone Parameter.csproj", "{9733ABC2-FAB9-4EFB-B76C-35CEAC8898D7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{FCE56FC5-AD39-493E-9602-32BBF47262AD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internal", "Internal", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{CD262206-9B00-4926-800D-50B7A5478929}"
-	ProjectSection(SolutionItems) = preProject
-		Dlls\ABOUT.md = Dlls\ABOUT.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CompanionFiles", "CompanionFiles", "{DC2B2514-8116-49CA-A3E5-E6F058E8CBEC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Skyline DataMiner", "Skyline DataMiner", "{8E6F46FB-42FD-4CEA-9C45-62DA0F557BF0}"
-	ProjectSection(SolutionItems) = preProject
-		CompanionFiles\Skyline DataMiner\AboutThisFolder.md = CompanionFiles\Skyline DataMiner\AboutThisFolder.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{DE922C94-0012-4194-BD77-C4E994E719FF}"
-	ProjectSection(SolutionItems) = preProject
-		Documentation\ABOUT.md = Documentation\ABOUT.md
-		README.md = README.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F8938D60-51A0-4880-9CFC-19C66379BB5D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Analysis", "Code Analysis", "{C49E6D4A-3B22-4927-86CA-9C1B6DF790B5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Analysis", "Code Analysis", "{B44B982F-8349-4F58-A69F-704E25E71825}"
 	ProjectSection(SolutionItems) = preProject
 		Internal\Code Analysis\qaction-debug.ruleset = Internal\Code Analysis\qaction-debug.ruleset
 		Internal\Code Analysis\qaction-release.ruleset = Internal\Code Analysis\qaction-release.ruleset
 		Internal\Code Analysis\stylecop.json = Internal\Code Analysis\stylecop.json
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Set Standalone Parameter", "Github Repositories Set Standalone Parameter", "{03B2DF9C-A3C0-42A6-BA3A-CAE6320F036D}"
-	ProjectSection(SolutionItems) = preProject
-		Github Repositories Set Standalone Parameter.xml = Github Repositories Set Standalone Parameter.xml
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Standalone", "Standalone", "{7747A6E2-4F8A-4CFF-AD59-4661C14B9CF3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{31F0F3DF-9F69-4316-8843-1F409B2A1CB4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{49D6E533-1864-4B34-95BC-F494FABE221A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Set Standalone Parameter_1", "Github Repositories Set Standalone Parameter_1\Github Repositories Set Standalone Parameter_1.csproj", "{EA174789-D4BD-468E-88B1-A05DB3285760}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Operators", "Operators", "{48744515-58B8-4905-8A87-95DF3E3FF8F8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Add Remove Repository", "Github Repositories Add Remove Repository", "{744DBFCE-BBAC-4DEF-B1D0-F163DFB20B6D}"
-	ProjectSection(SolutionItems) = preProject
-		Github Repositories Add Remove Repository.xml = Github Repositories Add Remove Repository.xml
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A93AE51B-5011-46D1-AF27-36A8A6EC64B3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{2693563C-C744-4898-9167-CEF9F772302D}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "Common\Common.shproj", "{EC972FC6-2128-4914-AD05-343929E3465A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Add Remove Repository_1", "Github Repositories Add Remove Repository_1\Github Repositories Add Remove Repository_1.csproj", "{ED1CA827-5999-4766-9945-527C7FD62E97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories Execute Workflow", "Github Repositories Execute Workflow\Github Repositories Execute Workflow.csproj", "{C5ABAF5C-CF23-49BD-8CEC-E62004370E5C}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "Common\Common.shproj", "{E573A8A0-89FA-4668-B70F-EAC3E94E1534}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories Create Repository", "Github Repositories Create Repository\Github Repositories Create Repository.csproj", "{A9C82A14-E36D-4CAC-B453-8953A0FD7BE5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Add Workflow", "Github Repositories Add Workflow", "{9FDA302F-0934-45D7-9AB7-9528C0707E8E}"
-	ProjectSection(SolutionItems) = preProject
-		Github Repositories Add Workflow.xml = Github Repositories Add Workflow.xml
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories Configuration", "Github Repositories Configuration\Github Repositories Configuration.csproj", "{0F00EBB9-F888-4D2F-8746-DB00408ACF70}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{72F60C18-991D-48F2-A408-02D8CF5DC2DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories Add Workflow", "Github Repositories Add Workflow\Github Repositories Add Workflow.csproj", "{49AAA637-9F0E-4E8D-9928-AA49BDCA2884}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Add Workflow_1", "Github Repositories Add Workflow_1\Github Repositories Add Workflow_1.csproj", "{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories Add Remove Repository", "Github Repositories Add Remove Repository\Github Repositories Add Remove Repository.csproj", "{0A95B5D7-33CD-4AE6-9CF5-26FBA187A271}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{DCE72521-F1E6-42BE-9DB3-9C19913DA3E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GQI Operator Markdown to HTML", "GQI Operator Markdown to HTML\GQI Operator Markdown to HTML.csproj", "{F98664AB-A64B-45E1-81DF-0433E7B548DB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Standalone", "Standalone", "{7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Get Github File Content", "Get Github File Content\Get Github File Content.csproj", "{0E6D2D90-AD15-4229-8235-D85F36A49861}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Get GitHub Table", "Get GitHub Table", "{06E31F8D-CEE0-4326-9754-8FBFA36485A6}"
-	ProjectSection(SolutionItems) = preProject
-		Get GitHub Table.xml = Get GitHub Table.xml
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Get Github Table", "Get Github Table\Get Github Table.csproj", "{368C65B1-3BD5-4826-A92E-697E3AE0CF20}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{10ACE89E-D6C8-47CA-8529-0A7E20404257}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Get GitHub Table_1", "Get GitHub Table_1\Get GitHub Table_1.csproj", "{11C2A342-33A2-4858-B558-8E60765E35D1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Create Repository", "Github Repositories Create Repository", "{09DEDAEA-64A6-4045-9C10-EB2B075447D7}"
-	ProjectSection(SolutionItems) = preProject
-		Github Repositories Create Repository.xml = Github Repositories Create Repository.xml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{A1849191-ED23-4C9D-A9AA-90F4A2100851}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Create Repository_1", "Github Repositories Create Repository_1\Github Repositories Create Repository_1.csproj", "{16175312-FA92-4E5E-95AE-AF0E417FAE62}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Operators", "Operators", "{36B64461-9031-4752-8285-8A5395182BE9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GQI Operator Markdown to HTML", "GQI Operator Markdown to HTML", "{80C6AF24-2582-4992-A82C-392EBB5BE2EA}"
-	ProjectSection(SolutionItems) = preProject
-		GQI Operator Markdown to HTML.xml = GQI Operator Markdown to HTML.xml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{27363421-4531-4337-B217-D2A3C3CEFFDA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GQI Operator Markdown to HTML_1", "GQI Operator Markdown to HTML_1\GQI Operator Markdown to HTML_1.csproj", "{94A4C267-46A0-4A97-9A41-0C4CC967F58C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Get Github File Content", "Get Github File Content", "{B663210F-F005-444B-909A-F87B1B41FCD2}"
-	ProjectSection(SolutionItems) = preProject
-		Get Github File Content.xml = Get Github File Content.xml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{D2CEB57A-DBA8-44D9-804C-C228CD07F282}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Get Github File Content_1", "Get Github File Content_1\Get Github File Content_1.csproj", "{BD35A920-7491-4C86-8737-9F024C8B9593}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Configuration", "Github Repositories Configuration", "{FD9A93BC-57C1-4A34-A3A8-3BB6B776B60E}"
-	ProjectSection(SolutionItems) = preProject
-		Github Repositories Configuration.xml = Github Repositories Configuration.xml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{3A295736-6D21-4F7C-B5F7-8320C5626BC6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Github Repositories Configuration_1", "Github Repositories Configuration_1\Github Repositories Configuration_1.csproj", "{94880E3D-BF84-47CC-95CF-69B4C1193C20}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Repositories Execute Workflow", "Github Repositories Execute Workflow", "{44D27D96-764A-4B5B-AEC0-93E8BB64CD01}"
-	ProjectSection(SolutionItems) = preProject
-		Github Repositories Execute Workflow.xml = Github Repositories Execute Workflow.xml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{740D1C05-A84E-4C4D-91AD-6097A330A1DA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories Execute Workflow_1", "Github Repositories Execute Workflow_1\Github Repositories Execute Workflow_1.csproj", "{9E8AFC76-522E-48B4-90CB-19074EECB6BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github Repositories", "Github Repositories\Github Repositories.csproj", "{63ED133F-D245-4986-A17F-36D966563318}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -132,87 +48,70 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EA174789-D4BD-468E-88B1-A05DB3285760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA174789-D4BD-468E-88B1-A05DB3285760}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA174789-D4BD-468E-88B1-A05DB3285760}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA174789-D4BD-468E-88B1-A05DB3285760}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED1CA827-5999-4766-9945-527C7FD62E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED1CA827-5999-4766-9945-527C7FD62E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED1CA827-5999-4766-9945-527C7FD62E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED1CA827-5999-4766-9945-527C7FD62E97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11C2A342-33A2-4858-B558-8E60765E35D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11C2A342-33A2-4858-B558-8E60765E35D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11C2A342-33A2-4858-B558-8E60765E35D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11C2A342-33A2-4858-B558-8E60765E35D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16175312-FA92-4E5E-95AE-AF0E417FAE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16175312-FA92-4E5E-95AE-AF0E417FAE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16175312-FA92-4E5E-95AE-AF0E417FAE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16175312-FA92-4E5E-95AE-AF0E417FAE62}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94A4C267-46A0-4A97-9A41-0C4CC967F58C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94A4C267-46A0-4A97-9A41-0C4CC967F58C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94A4C267-46A0-4A97-9A41-0C4CC967F58C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94A4C267-46A0-4A97-9A41-0C4CC967F58C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD35A920-7491-4C86-8737-9F024C8B9593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD35A920-7491-4C86-8737-9F024C8B9593}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD35A920-7491-4C86-8737-9F024C8B9593}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD35A920-7491-4C86-8737-9F024C8B9593}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94880E3D-BF84-47CC-95CF-69B4C1193C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94880E3D-BF84-47CC-95CF-69B4C1193C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94880E3D-BF84-47CC-95CF-69B4C1193C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94880E3D-BF84-47CC-95CF-69B4C1193C20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E8AFC76-522E-48B4-90CB-19074EECB6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E8AFC76-522E-48B4-90CB-19074EECB6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E8AFC76-522E-48B4-90CB-19074EECB6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E8AFC76-522E-48B4-90CB-19074EECB6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9733ABC2-FAB9-4EFB-B76C-35CEAC8898D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9733ABC2-FAB9-4EFB-B76C-35CEAC8898D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9733ABC2-FAB9-4EFB-B76C-35CEAC8898D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9733ABC2-FAB9-4EFB-B76C-35CEAC8898D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5ABAF5C-CF23-49BD-8CEC-E62004370E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5ABAF5C-CF23-49BD-8CEC-E62004370E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5ABAF5C-CF23-49BD-8CEC-E62004370E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5ABAF5C-CF23-49BD-8CEC-E62004370E5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9C82A14-E36D-4CAC-B453-8953A0FD7BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9C82A14-E36D-4CAC-B453-8953A0FD7BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9C82A14-E36D-4CAC-B453-8953A0FD7BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9C82A14-E36D-4CAC-B453-8953A0FD7BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F00EBB9-F888-4D2F-8746-DB00408ACF70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F00EBB9-F888-4D2F-8746-DB00408ACF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F00EBB9-F888-4D2F-8746-DB00408ACF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F00EBB9-F888-4D2F-8746-DB00408ACF70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49AAA637-9F0E-4E8D-9928-AA49BDCA2884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49AAA637-9F0E-4E8D-9928-AA49BDCA2884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49AAA637-9F0E-4E8D-9928-AA49BDCA2884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49AAA637-9F0E-4E8D-9928-AA49BDCA2884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A95B5D7-33CD-4AE6-9CF5-26FBA187A271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A95B5D7-33CD-4AE6-9CF5-26FBA187A271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A95B5D7-33CD-4AE6-9CF5-26FBA187A271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A95B5D7-33CD-4AE6-9CF5-26FBA187A271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98664AB-A64B-45E1-81DF-0433E7B548DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98664AB-A64B-45E1-81DF-0433E7B548DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98664AB-A64B-45E1-81DF-0433E7B548DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98664AB-A64B-45E1-81DF-0433E7B548DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E6D2D90-AD15-4229-8235-D85F36A49861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E6D2D90-AD15-4229-8235-D85F36A49861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E6D2D90-AD15-4229-8235-D85F36A49861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E6D2D90-AD15-4229-8235-D85F36A49861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368C65B1-3BD5-4826-A92E-697E3AE0CF20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368C65B1-3BD5-4826-A92E-697E3AE0CF20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368C65B1-3BD5-4826-A92E-697E3AE0CF20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368C65B1-3BD5-4826-A92E-697E3AE0CF20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63ED133F-D245-4986-A17F-36D966563318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63ED133F-D245-4986-A17F-36D966563318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63ED133F-D245-4986-A17F-36D966563318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63ED133F-D245-4986-A17F-36D966563318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8E6F46FB-42FD-4CEA-9C45-62DA0F557BF0} = {DC2B2514-8116-49CA-A3E5-E6F058E8CBEC}
-		{C49E6D4A-3B22-4927-86CA-9C1B6DF790B5} = {04EC5556-07B7-49D7-8B3A-FF10EBF353D7}
-		{03B2DF9C-A3C0-42A6-BA3A-CAE6320F036D} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
-		{31F0F3DF-9F69-4316-8843-1F409B2A1CB4} = {03B2DF9C-A3C0-42A6-BA3A-CAE6320F036D}
-		{EA174789-D4BD-468E-88B1-A05DB3285760} = {31F0F3DF-9F69-4316-8843-1F409B2A1CB4}
-		{744DBFCE-BBAC-4DEF-B1D0-F163DFB20B6D} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
-		{2693563C-C744-4898-9167-CEF9F772302D} = {744DBFCE-BBAC-4DEF-B1D0-F163DFB20B6D}
-		{ED1CA827-5999-4766-9945-527C7FD62E97} = {2693563C-C744-4898-9167-CEF9F772302D}
-		{9FDA302F-0934-45D7-9AB7-9528C0707E8E} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
-		{72F60C18-991D-48F2-A408-02D8CF5DC2DC} = {9FDA302F-0934-45D7-9AB7-9528C0707E8E}
-		{E9AA68D4-AB23-45E2-92AE-ABEBC9E66BC1} = {72F60C18-991D-48F2-A408-02D8CF5DC2DC}
-		{DCE72521-F1E6-42BE-9DB3-9C19913DA3E3} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
-		{7B8009A9-AC22-4EEA-854E-E0BA1831AAFC} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
-		{06E31F8D-CEE0-4326-9754-8FBFA36485A6} = {DCE72521-F1E6-42BE-9DB3-9C19913DA3E3}
-		{10ACE89E-D6C8-47CA-8529-0A7E20404257} = {06E31F8D-CEE0-4326-9754-8FBFA36485A6}
-		{11C2A342-33A2-4858-B558-8E60765E35D1} = {10ACE89E-D6C8-47CA-8529-0A7E20404257}
-		{09DEDAEA-64A6-4045-9C10-EB2B075447D7} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
-		{A1849191-ED23-4C9D-A9AA-90F4A2100851} = {09DEDAEA-64A6-4045-9C10-EB2B075447D7}
-		{16175312-FA92-4E5E-95AE-AF0E417FAE62} = {A1849191-ED23-4C9D-A9AA-90F4A2100851}
-		{36B64461-9031-4752-8285-8A5395182BE9} = {FCE56FC5-AD39-493E-9602-32BBF47262AD}
-		{80C6AF24-2582-4992-A82C-392EBB5BE2EA} = {36B64461-9031-4752-8285-8A5395182BE9}
-		{27363421-4531-4337-B217-D2A3C3CEFFDA} = {80C6AF24-2582-4992-A82C-392EBB5BE2EA}
-		{94A4C267-46A0-4A97-9A41-0C4CC967F58C} = {27363421-4531-4337-B217-D2A3C3CEFFDA}
-		{B663210F-F005-444B-909A-F87B1B41FCD2} = {DCE72521-F1E6-42BE-9DB3-9C19913DA3E3}
-		{D2CEB57A-DBA8-44D9-804C-C228CD07F282} = {B663210F-F005-444B-909A-F87B1B41FCD2}
-		{BD35A920-7491-4C86-8737-9F024C8B9593} = {D2CEB57A-DBA8-44D9-804C-C228CD07F282}
-		{FD9A93BC-57C1-4A34-A3A8-3BB6B776B60E} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
-		{3A295736-6D21-4F7C-B5F7-8320C5626BC6} = {FD9A93BC-57C1-4A34-A3A8-3BB6B776B60E}
-		{94880E3D-BF84-47CC-95CF-69B4C1193C20} = {3A295736-6D21-4F7C-B5F7-8320C5626BC6}
-		{44D27D96-764A-4B5B-AEC0-93E8BB64CD01} = {7B8009A9-AC22-4EEA-854E-E0BA1831AAFC}
-		{740D1C05-A84E-4C4D-91AD-6097A330A1DA} = {44D27D96-764A-4B5B-AEC0-93E8BB64CD01}
-		{9E8AFC76-522E-48B4-90CB-19074EECB6BD} = {740D1C05-A84E-4C4D-91AD-6097A330A1DA}
+		{9733ABC2-FAB9-4EFB-B76C-35CEAC8898D7} = {7747A6E2-4F8A-4CFF-AD59-4661C14B9CF3}
+		{B44B982F-8349-4F58-A69F-704E25E71825} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{EC972FC6-2128-4914-AD05-343929E3465A} = {A93AE51B-5011-46D1-AF27-36A8A6EC64B3}
+		{C5ABAF5C-CF23-49BD-8CEC-E62004370E5C} = {7747A6E2-4F8A-4CFF-AD59-4661C14B9CF3}
+		{A9C82A14-E36D-4CAC-B453-8953A0FD7BE5} = {7747A6E2-4F8A-4CFF-AD59-4661C14B9CF3}
+		{0F00EBB9-F888-4D2F-8746-DB00408ACF70} = {7747A6E2-4F8A-4CFF-AD59-4661C14B9CF3}
+		{49AAA637-9F0E-4E8D-9928-AA49BDCA2884} = {7747A6E2-4F8A-4CFF-AD59-4661C14B9CF3}
+		{0A95B5D7-33CD-4AE6-9CF5-26FBA187A271} = {7747A6E2-4F8A-4CFF-AD59-4661C14B9CF3}
+		{F98664AB-A64B-45E1-81DF-0433E7B548DB} = {48744515-58B8-4905-8A87-95DF3E3FF8F8}
+		{0E6D2D90-AD15-4229-8235-D85F36A49861} = {49D6E533-1864-4B34-95BC-F494FABE221A}
+		{368C65B1-3BD5-4826-A92E-697E3AE0CF20} = {49D6E533-1864-4B34-95BC-F494FABE221A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FE357FD7-C2CA-4152-A59F-2F2F7BAF839C}
+		SolutionGuid = {655F3889-1D87-499B-BA7C-6D682BE2E450}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Common\Common.projitems*{16175312-fa92-4e5e-95ae-af0e417fae62}*SharedItemsImports = 5
-		Common\Common.projitems*{9e8afc76-522e-48b4-90cb-19074eecb6bd}*SharedItemsImports = 5
-		Common\Common.projitems*{e573a8a0-89fa-4668-b70f-eac3e94e1534}*SharedItemsImports = 13
-		Common\Common.projitems*{e9aa68d4-ab23-45e2-92ae-abebc9e66bc1}*SharedItemsImports = 5
+		Common\Common.projitems*{49aaa637-9f0e-4e8d-9928-aa49bdca2884}*SharedItemsImports = 5
+		Common\Common.projitems*{a9c82a14-e36d-4cac-b453-8953a0fd7be5}*SharedItemsImports = 5
+		Common\Common.projitems*{c5abaf5c-cf23-49bd-8cec-e62004370e5c}*SharedItemsImports = 5
+		Common\Common.projitems*{ec972fc6-2128-4914-ad05-343929e3465a}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
