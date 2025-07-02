@@ -111,56 +111,56 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 			context.Id = repoResult.RepositoryId.FullName;
 			CreationProgress?.Invoke(this, new StatusProgressEventArgs("Created Repository"));
 
-			// Create the Sonar Cloud Project if needed (Only the SkylineCommunication organization has the paid plan for Sonar Cloud)
-			if (!String.IsNullOrEmpty(context.SonarCloudProjectID) &&
-				context.SonarCloudProjectID == "Generate" &&
-				context.Organization == "SkylineCommunications")
-			{
-				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Creating Sonar Cloud Project..."));
+			//// Create the Sonar Cloud Project if needed (Only the SkylineCommunication organization has the paid plan for Sonar Cloud)
+			//if (!String.IsNullOrEmpty(context.SonarCloudProjectID) &&
+			//	context.SonarCloudProjectID == "Generate" &&
+			//	context.Organization == "SkylineCommunications")
+			//{
+			//	CreationProgress?.Invoke(this, new StatusProgressEventArgs("Creating Sonar Cloud Project..."));
 
-				if (CreateSonarCloudProject(context, out var description))
-				{
-					CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully created Sonar Cloud Project with id '{context.SonarCloudProjectID}'"));
-				}
-				else
-				{
-					CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
-				}
-			}
+			//	if (CreateSonarCloudProject(context, out var description))
+			//	{
+			//		CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully created Sonar Cloud Project with id '{context.SonarCloudProjectID}'"));
+			//	}
+			//	else
+			//	{
+			//		CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
+			//	}
+			//}
 
-			// Create a Sonar Cloud User Token if needed (Only the SkylineCommunication organization has the paid plan for Sonar Cloud)
-			if (!String.IsNullOrEmpty(context.SonarCloudToken) &&
-				context.SonarCloudToken == "Generate" &&
-				context.Organization == "SkylineCommunications")
-			{
-				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Creating Sonar Cloud Token..."));
+			//// Create a Sonar Cloud User Token if needed (Only the SkylineCommunication organization has the paid plan for Sonar Cloud)
+			//if (!String.IsNullOrEmpty(context.SonarCloudToken) &&
+			//	context.SonarCloudToken == "Generate" &&
+			//	context.Organization == "SkylineCommunications")
+			//{
+			//	CreationProgress?.Invoke(this, new StatusProgressEventArgs("Creating Sonar Cloud Token..."));
 
-				if (CreateSonarCloudToken(context, out var description))
-				{
-					CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully created Sonar Cloud Token '{context.SonarCloudToken}'"));
-				}
-				else
-				{
-					CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
-					hasErrors = true;
-				}
-			}
+			//	if (CreateSonarCloudToken(context, out var description))
+			//	{
+			//		CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully created Sonar Cloud Token '{context.SonarCloudToken}'"));
+			//	}
+			//	else
+			//	{
+			//		CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
+			//		hasErrors = true;
+			//	}
+			//}
 
-			// Fetch the sonar cloud project information
-			if (!String.IsNullOrEmpty(context.SonarCloudProjectID) &&
-				context.SonarCloudProjectID != "Generate")
-			{
-				CreationProgress?.Invoke(this, new StatusProgressEventArgs("Fetching Sonar Cloud Project Information..."));
+			//// Fetch the sonar cloud project information
+			//if (!String.IsNullOrEmpty(context.SonarCloudProjectID) &&
+			//	context.SonarCloudProjectID != "Generate")
+			//{
+			//	CreationProgress?.Invoke(this, new StatusProgressEventArgs("Fetching Sonar Cloud Project Information..."));
 
-				if (RetrieveSonarCloudProjectComponent(context, out var description))
-				{
-					CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully fetched Sonar Cloud Project with id '{context.SonarCloudProjectID}'"));
-				}
-				else
-				{
-					CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
-				}
-			}
+			//	if (RetrieveSonarCloudProjectComponent(context, out var description))
+			//	{
+			//		CreationProgress?.Invoke(this, new StatusProgressEventArgs($"Successfully fetched Sonar Cloud Project with id '{context.SonarCloudProjectID}'"));
+			//	}
+			//	else
+			//	{
+			//		CreationProgress?.Invoke(this, new StatusProgressEventArgs(description));
+			//	}
+			//}
 
 			// Create the files needed for the type of repository
 			CreationProgress?.Invoke(this, new StatusProgressEventArgs("Creating needed files..."));
@@ -236,8 +236,10 @@ namespace Skyline.DataMiner.Github.Repositories.Models
 						CreationProgress?.Invoke(this, new StatusProgressEventArgs(workflowResult.Description));
 						hasErrors = true;
 					}
-
-					CreationProgress?.Invoke(this, new StatusProgressEventArgs("Successfully added workflow"));
+					else
+					{
+						CreationProgress?.Invoke(this, new StatusProgressEventArgs("Successfully added workflow"));
+					}
 				}
 			}
 

@@ -16,6 +16,7 @@ namespace Skyline.DataMiner.Github.Repositories.Views
 			var form = new FormPanel();
 			form.Add("Sonar Cloud Project ID", SonarCloudProjectIdButton);
 			form.Add("Sonar Cloud Token", SonarCloudTokenButton);
+			form.Add("DataMiner Deploy Key", DataMinerDeployKey);
 			form.Add("DataMiner Token", DataMinerToken);
 			form.Add("Github Token", GithubToken);
 			form.Add("Nuget API Token", NugetApiToken);
@@ -31,6 +32,8 @@ namespace Skyline.DataMiner.Github.Repositories.Views
 		public IButton SonarCloudProjectIdButton{ get; } = new Button("Edit...");
 
 		public IButton SonarCloudTokenButton { get; } = new Button("Edit...");
+
+		public IButton DataMinerDeployKey { get; } = new Button("Edit...");
 
 		public IButton DataMinerToken { get; } = new Button("Edit...");
 

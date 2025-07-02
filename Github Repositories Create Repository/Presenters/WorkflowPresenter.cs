@@ -19,6 +19,7 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 
 		private readonly ExplanationInputView sonarCloudProjectIdView;
 		private readonly ExplanationInputView sonarCloudTokenView;
+		private readonly ExplanationInputView dataMinerDeployKeyView;
 		private readonly ExplanationInputView dataMinerTokenView;
 		private readonly ExplanationInputView githubTokenView;
 		private readonly ExplanationInputView nugetApiTokenView;
@@ -43,6 +44,11 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 			sonarCloudTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
 			sonarCloudTokenView.BackButton.Pressed += ClearStatus;
 			workflowView.SonarCloudTokenButton.Pressed += (sender, e) => context.Controller.ShowDialog(sonarCloudTokenView);
+
+			dataMinerDeployKeyView = new DataMinerDeployKeyView(context.Engine);
+			dataMinerDeployKeyView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
+			dataMinerDeployKeyView.BackButton.Pressed += ClearStatus;
+			workflowView.DataMinerDeployKey.Pressed += (sender, e) => context.Controller.ShowDialog(dataMinerDeployKeyView);
 
 			dataMinerTokenView = new DataMinerTokenView(context.Engine);
 			dataMinerTokenView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(workflowView);
@@ -69,6 +75,7 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 		public void Load(RepositoryContext repositoryContext)
 		{
 			this.repositoryContext = repositoryContext;
+			var isSkylineRepo = repositoryContext.Organization == "SkylineCommunications";
 			Invisible();
 			switch (repositoryContext.WorkflowType)
 			{
@@ -79,7 +86,16 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 				case WorkflowType.AutomationScriptCI:
 				case WorkflowType.AutomationScriptCICD:
 				case WorkflowType.ConnectorCI:
-					sonarCloudProjectIdView.Input.Text = "Generate";
+				case WorkflowType.AppPackage:
+					if (isSkylineRepo)
+					{
+						sonarCloudProjectIdView.Input.Text = "Generate";
+					}
+					else
+					{
+						workflowView.SonarCloudProjectIdButton.IsVisible = true;
+					}
+
 					workflowView.DataMinerToken.IsVisible = true;
 					requiredInputs = new List<ExplanationInputView>
 					{
@@ -88,7 +104,13 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 					};
 					if (!repositoryContext.Public)
 					{
-						sonarCloudTokenView.Input.Text = "Generate";
+						sonarCloudTokenView.Input.Text = isSkylineRepo ? "Generate" : String.Empty;
+						if (!isSkylineRepo)
+						{
+							sonarCloudTokenView.Input.Text = String.Empty;
+							workflowView.SonarCloudTokenButton.IsVisible = true;
+						}
+
 						requiredInputs.Add(sonarCloudTokenView);
 					}
 
@@ -111,6 +133,15 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 					break;
 
 				case WorkflowType.NugetSolutionCICD:
+					if (isSkylineRepo)
+					{
+						sonarCloudProjectIdView.Input.Text = "Generate";
+					}
+					else
+					{
+						workflowView.SonarCloudProjectIdButton.IsVisible = true;
+					}
+
 					sonarCloudProjectIdView.Input.Text = "Generate";
 					workflowView.NugetApiToken.IsVisible = true;
 					requiredInputs = new List<ExplanationInputView>
@@ -121,6 +152,12 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 					if (!repositoryContext.Public)
 					{
 						sonarCloudTokenView.Input.Text = "Generate";
+						if (!isSkylineRepo)
+						{
+							sonarCloudTokenView.Input.Text = String.Empty;
+							workflowView.SonarCloudTokenButton.IsVisible = true;
+						}
+
 						requiredInputs.Add(sonarCloudTokenView);
 					}
 					break;
@@ -134,6 +171,7 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 		{
 			workflowView.SonarCloudProjectIdButton.IsVisible = false;
 			workflowView.SonarCloudTokenButton.IsVisible = false;
+			workflowView.DataMinerDeployKey.IsVisible = false;
 			workflowView.DataMinerToken.IsVisible = false;
 			workflowView.GithubToken.IsVisible = false;
 			workflowView.NugetApiToken.IsVisible = false;
@@ -145,6 +183,13 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 			var sb = new StringBuilder();
 			foreach (var input in requiredInputs)
 			{
+				if (input is DataMinerTokenView &&
+					repositoryContext.Organization == "SkylineCommunications" &&
+					repositoryContext.Public)
+				{
+					continue;
+				}
+
 				if (String.IsNullOrEmpty(input.Input.Text))
 				{
 					sb.AppendLine($"'{input.Title}' cannot be left empty.");
@@ -171,7 +216,8 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 
 			repositoryContext.SonarCloudProjectID = sonarCloudProjectIdView.Input.Text;
 			repositoryContext.SonarCloudToken = sonarCloudTokenView.Input.Text;
-			repositoryContext.DataMinerDeployKey = dataMinerTokenView.Input.Text;
+			repositoryContext.DataMinerDeployKey = dataMinerDeployKeyView.Input.Text;
+			repositoryContext.DataMinerToken = dataMinerTokenView.Input.Text;
 			repositoryContext.GithubToken = githubTokenView.Input.Text;
 			repositoryContext.NugetApiKey = nugetApiTokenView.Input.Text;
 			progressPresenter.Load(repositoryContext);

@@ -31,6 +31,8 @@ namespace Skyline.DataMiner.Github.Repositories.Helpers
 
 		public string SonarCloudBadgeToken { get; set; }
 
+		public string DataMinerToken { get; set; }
+
 		public string DataMinerDeployKey { get; set; }
 
 		public string GithubToken { get; set; }

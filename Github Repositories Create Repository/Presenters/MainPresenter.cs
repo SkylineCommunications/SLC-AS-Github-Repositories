@@ -42,6 +42,11 @@ namespace Skyline.DataMiner.Github.Repositories.Presenters
 			mainView.NextButton.Pressed += Next_Pressed;
 			workflowView.BackButton.Pressed += (sender, e) => context.Controller.ShowDialog(mainView);
 			mainView.QuitButton.Pressed += (sender, e) => mainView.Engine.ExitSuccess("User aborted script.");
+
+			if (context.OrganizationId != "SkylineCommunications")
+			{
+				mainView.WorkflowType.Options.RemoveValue(ConnectorAPI.Github.Repositories.InterAppMessages.Workflows.WorkflowType.InternalNugetSolutionCICD);
+			}
 		}
 
 		private void Teams_Pressed(object sender, EventArgs e)

@@ -26,6 +26,7 @@ namespace Skyline.DataMiner.Github.Repositories.Views
 			this.WorkflowType.Options.AddRange(
 				Enum.GetValues(typeof(WorkflowType))
 					.Cast<WorkflowType>()
+					.Where(x => (int)x > 0)
 					.Where(x => x != ConnectorAPI.Github.Repositories.InterAppMessages.Workflows.WorkflowType.NugetSolutionCICD)
 					.Select(x => Option.Create<WorkflowType?>(x.FriendlyDescription(), x)));
 
